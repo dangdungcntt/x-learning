@@ -15,17 +15,14 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
+            $table->foreign('id', 'teachers_id_foreign')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('job');
             $table->string('degree');
             $table->string('experience');
             $table->timestamps();
-        });
-
-        Schema::table('teachers', function(Blueprint $table) {
-            $table->foreign('id')
-                ->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 

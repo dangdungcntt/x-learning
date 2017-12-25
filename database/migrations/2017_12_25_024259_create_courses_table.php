@@ -20,17 +20,15 @@ class CreateCoursesTable extends Migration
             $table->integer('type')->unsigned()->nullable();
             $table->dateTime('start_at');
             $table->dateTime('end_at');
-            $table->integer('vote');
-            $table->integer('vote_count');
-            $table->string('image');
+            $table->integer('vote')->nullable();
+            $table->integer('vote_count')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('teacher_id')->unsigned()->nullable();
+            $table->foreign('teacher_id', 'courses_teacher_id_foreign')
+              ->references('id')->on('teachers')
+              ->onDelete('set null')
+              ->onUpdate('cascade');
             $table->timestamps();
-        });
-
-        Schema::table('courses', function(Blueprint $table) {
-            $table->foreign('type')
-                ->references('id')->on('course_types')
-                ->onDelete('set null')
-                ->onUpdate('cascade');
         });
     }
 
