@@ -9,3 +9,15 @@
 .input-box input.has-error {
     border: solid 1px #de2323;
 }
+
+.my-account .account-tab ul li.tab-right {
+    float: right;
+}
+
+.my-account .account-tab ul li.tab-right:hover a {
+    border-bottom: 0;
+}
+
+.form-horizontal .control-label {
+    text-align: right !important;
+}

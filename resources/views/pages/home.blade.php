@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<link href="{{ asset('css/loader.css') }}" rel="stylesheet">
 	<!--  loader css -->
 @include('layouts.head')
 
 <body>
 	<div class="wapper">
-		<div id="loader-wrapper">
-			<div id="loader"></div>
-			<div class="loader-section section-left"></div>
-			<div class="loader-section section-right"></div>
-		</div>
 		@include('layouts.top')
         @include('layouts.header')
 		
 		<section class="banner">
 			<div class="banner-img">
-				<img src="images/banner/banner-img1.jpg" alt="">
+				<img src="/images/banner/banner-img1.jpg" alt="">
 			</div>
 			<div class="banner-text">
 				<div class="container">
@@ -42,7 +35,7 @@
 					<div class="col-md-4 col-sm-6">
 						<div class="course-box">
 							<div class="img">
-								<img src="images/courses/courses-img1.jpg" alt="">
+								<img src="/images/courses/courses-img1.jpg" alt="">
 								<div class="course-info">
 									<div class="date">
 										<i class="fa fa-calendar"></i>16-09-2016</div>

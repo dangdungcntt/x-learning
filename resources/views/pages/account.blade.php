@@ -1,4 +1,4 @@
-@extends('master') 
+@extends('master')
 @section('content')
 <div class="my-accountPage">
 	<div class="container">
@@ -17,34 +17,55 @@
 				</ul>
 			</div>
 			<div class="tab-content profile-con open">
-				<div class="personal-edit">
-					<a href="#">
-						<i class="fa fa-pencil"></i>
-						<span>Edit Profile</span>
-					</a>
-				</div>
-				<div class="personal-information">
-					<div class="info-slide">
-						<p>
-							<span>Name :</span>Stefan Hartmann</p>
-					</div>
-					<div class="info-slide">
-						<p>
-							<span>Email ID :</span>StefanHartmann@jourrapide.com</p>
-					</div>
-					<div class="info-slide">
-						<p>
-							<span>Mobile Number :</span>02692 83 14 96</p>
-					</div>
-					<div class="info-slide">
-						<p>
-							<span>Date Of Birth :</span>June 6, 1987</p>
-					</div>
-					<div class="info-slide">
-						<p>
-							<span>Gender :</span>Male</p>
-					</div>
-				</div>
+				<form class="form-horizontal" action="/action_page.php">
+						<div class="form-group">
+							<label class="control-label col-sm-2">Name:</label>
+							<div class="col-sm-10">
+								<input type="email" value="{{$user['name']}}" class="form-control" placeholder="Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="pwd">Birthday:</label>
+							<div class="col-sm-10">
+								<input type="date" value="{{$user['birthday'] ?? ''}}" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="pwd">Gender:</label>
+							<div class="col-sm-10">
+								<label class="label_radio {{$user['sex'] ? 'r_on' : ''}}">
+									<input type="radio" name="sex" {{$user['sex'] ? 'checked' : ''}} value="1"> Male
+								</label>
+								<label class="label_radio {{$user['sex'] ? '' : 'r_on'}}">
+									<input type="radio" name="sex" {{$user['sex'] ? '' : 'checked'}} value="0"> Female
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Email:</label>
+							<div class="col-sm-10">
+								<input type="email" value="{{$user['email']}}" class="form-control" placeholder="Email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Phone:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{$user['phone']}}" class="form-control" placeholder="Phone">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Address:</label>
+							<div class="col-sm-10">
+								<input type="text" value="{{$user['address']}}" class="form-control" placeholder="Address">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Info:</label>
+							<div class="col-sm-10">
+								<textarea style="resize: vertical;display: inline-block;width: 99%;overflow-x: hidden" class="form-control" rows="5">{{$user['info'] ?? ''}}</textarea>
+							</div>
+						</div>
+					</form>
 			</div>
 			<div class="tab-content order-con">
 				<table class="booking-viewTable">

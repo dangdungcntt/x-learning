@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Gate::allows('admin', auth()->user())) {
+
+            return view('home');
+        }
+        return redirect('/')->with('status', 'success');
     }
 }

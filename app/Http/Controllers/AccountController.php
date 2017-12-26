@@ -6,13 +6,20 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show()
     {
+//        die(json_encode(auth()->user()));
         $title = 'Account settings - Academy';
         $view = 'pages.account';
         $data = [
             'title' => $title,
-            'active' => getActiveMenu()
+            'active' => getActiveMenu(),
+            'user' => auth()->user()
         ];
         return view($view, $data);
     }

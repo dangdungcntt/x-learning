@@ -878,9 +878,9 @@ input[type="text"]:focus {border:none; outline:none; }
 
 .checkout-content .step3 {border-top: 1px solid #d8d8d8; display: inline-block; padding:20px; width: 100%; }
 .checkout-content .step3 .radio-slide {padding-bottom:15px; display:block; }
-.checkout-content .step3 .radio-slide .label_radio {padding:0 13px 0 24px; line-height:22px; font-size:14px; color:#666666; font-weight:normal; margin:0px;  background:url(../images/radio-img.png) no-repeat left 5px; }
-.checkout-content .step3 .radio-slide .label_radio input {position:absolute; left:-9999px; }
-.checkout-content .step3 .radio-slide .label_radio.r_on {background-position:left -102px; }
+.label_radio {padding:0 13px 0 24px; line-height:22px; font-size:14px; color:#666666; font-weight:normal; margin:0px;  background:url(../images/radio-img.png) no-repeat left 5px; }
+.label_radio input {position:absolute; left:-9999px; }
+.label_radio.r_on {background-position:left -102px; }
 .checkout-content .step3 .place-order {display:block; text-align:right; }
 /*=-=-=-=-=-=-=-=-=-=-=- Check Out End -=-=-=-=-=-=-=-=-=-=-=*/
 
@@ -1600,15 +1600,15 @@ input[type="text"]:focus {border:none; outline:none; }
 .my-account .booking-viewTable td.detail a .icon {color:#888888; padding:3px 5px 0 0; display:inline-block; vertical-align:top; }
 .my-account .booking-viewTable td .small-heading {display:none;}
 .my-account .change-password {padding-bottom:0; }
-.my-account .change-password .input-box {display:block; width:100%; margin:0 0 10px 0; max-width:548px; padding:0 0 0 0;}
-.my-account .change-password .input-box input {display:inline-block; width:379px; border:solid 1px #cccccc; padding:10px; line-height:18px; height:40px; border-radius:5px; }
-.my-account .change-password .submit-box {padding:8px 0 0 0; }
-.my-account .change-password .submit-box .btn {width:116px; padding:0px; line-height:40px;font-size:16px; font-weight:600; }
-.my-account .change-password .submit-box .btn.gray {margin:0 0 0 6px; width:99px; }
-.my-account .personal-information {width:70%; display:inline-block; vertical-align:top; float:left;}
+.my-account .input-box {display:block; width:100%; margin:0 0 10px 0; max-width:548px; padding:0 0 0 0;}
+.my-account .input-box input {display:inline-block; width:379px; border:solid 1px #cccccc; padding:10px; line-height:18px; height:40px; border-radius:5px; }
+.my-account .submit-box {padding:8px 0 0 0; }
+.my-account .submit-box .btn {width:116px; padding:0px; line-height:40px;font-size:16px; font-weight:600; }
+.my-account .submit-box .btn.gray {margin:0 0 0 6px; width:99px; }
+.my-account .personal-information {display:inline-block; vertical-align:top; float:left;}
 .my-account .personal-information .info-slide {padding:0 20px 0 0; display:inline-block; width:100%;}
 .my-account .personal-information .info-slide p {display:block; line-height:30px; margin:0px; font-size:14px; color:#666666; }
-.my-account .personal-information .info-slide p span {text-align:left; width:50%; max-width:192px; padding:0 15px 0 0; display:inline-block; color:#333333; font-weight:600; }
+.my-account .personal-information .info-slide p span {text-align:left; max-width:192px; padding:0 15px 0 0; color:#333333; font-weight:600; }
 .my-account .personal-edit {display:inline-block; vertical-align:top; width:29%; text-align:right; float:right;}
 .my-account .personal-edit a {display:inline-block; line-height:30px; font-size:16px; color:#02cbf7; text-decoration:none; }
 .my-account .personal-edit a:hover {color:#fe5969;}
