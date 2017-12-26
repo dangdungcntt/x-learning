@@ -10,16 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'PageController@home');
-Route::get('/contact', 'PageController@contact');
 
-Route::get('/login', 'UserController@show');
-
-Route::get('/account', 'AccountController@show');
-Route::get('/my-courses', 'AccountController@myCourses');
-
-Route::resource('instructors','InstructorController');
-Route::resource('courses','CourseController');
 
 // Route::get('/*', function() {
 //     $title = 'Page not found';
@@ -32,3 +23,16 @@ Route::resource('courses','CourseController');
 // });
 
 
+use Illuminate\Support\Facades\Auth;
+
+Auth::routes();
+Route::get('/', 'PageController@home');
+Route::get('/contact', 'PageController@contact');
+
+Route::get('/account', 'AccountController@show');
+Route::get('/my-courses', 'AccountController@myCourses');
+
+Route::resource('instructors','InstructorController');
+Route::resource('courses','CourseController');
+
+Route::get('/home', 'HomeController@index')->name('home');

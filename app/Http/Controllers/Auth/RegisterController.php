@@ -22,6 +22,17 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    public function showRegistrationForm()
+    {
+        $title = 'Register - Academy';
+        $view = 'auth.register';
+        $data = [
+            'title' => $title,
+            'active' => getActiveMenu()
+        ];
+        return view($view, $data);
+    }
+
     /**
      * Where to redirect users after registration.
      *

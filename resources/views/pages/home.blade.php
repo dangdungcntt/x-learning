@@ -3,7 +3,7 @@
 
 <link href="{{ asset('css/loader.css') }}" rel="stylesheet">
 	<!--  loader css -->
-@include('layout.head')
+@include('layouts.head')
 
 <body>
 	<div class="wapper">
@@ -12,8 +12,8 @@
 			<div class="loader-section section-left"></div>
 			<div class="loader-section section-right"></div>
 		</div>
-		@include('layout.top') 
-        @include('layout.header') 
+		@include('layouts.top')
+        @include('layouts.header')
 		
 		<section class="banner">
 			<div class="banner-img">
@@ -355,10 +355,10 @@
 			</div>
 		</section>
 
-		@include('layout.footer')
+		@include('layouts.footer')
 
     </div>
-		@include('layout.core-scripts')
+		@include('layouts.core-scripts')
 </body>
 </html>
 

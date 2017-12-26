@@ -20,6 +20,17 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    public function showLoginForm()
+    {
+        $title = 'Login - Academy';
+        $view = 'auth.login';
+        $data = [
+            'title' => $title,
+            'active' => getActiveMenu()
+        ];
+        return view($view, $data);
+    }
+
     /**
      * Where to redirect users after login.
      *

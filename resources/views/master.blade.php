@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
-@include('layout.head')
+@include('layouts.head')
 
 <body>
 	<div class="wapper">
 
-		@include('layout.top') 
-        @include('layout.header') 
-        @include('layout.banner')
+		@include('layouts.top')
+        @include('layouts.header')
+        @include('layouts.banner')
 
         @yield('content')
 
-		@include('layout.footer')
+		@include('layouts.footer')
 
 	</div>
 	
-		@include('layout.core-scripts')
+		@include('layouts.core-scripts')
     
 	    @yield('scripts')
 </body>
