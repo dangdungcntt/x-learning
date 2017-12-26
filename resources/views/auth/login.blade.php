@@ -11,7 +11,7 @@
                     <form  method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="input-box">
-                            <input type="text" placeholder="Email" name="email" value="{{ old('email') }}" required autofocus>
+                            <input type="text" class="{{ $errors->has('email') ? ' has-error' : '' }}" placeholder="Email" name="email" value="{{ old('email') }}" required autofocus>
                             @if ($errors->has('email'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -19,7 +19,7 @@
                             @endif
                         </div>
                         <div class="input-box">
-                            <input type="text" placeholder="Password" name="password" required>
+                            <input type="password" class="{{ $errors->has('password') ? ' has-error' : '' }}" placeholder="Password" name="password" required>
                             @if ($errors->has('password'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -34,7 +34,8 @@
                             </div>
                         </div>
                         <div class="submit-slide">
-                            <input type="submit" value="Login" class="btn">
+                            <button type="submit" class="btn">Login</button>
+                            <a href="{{ route('register') }}" class="btn btn-default">Register</a>
                         </div>
                     </form>
                 </div>

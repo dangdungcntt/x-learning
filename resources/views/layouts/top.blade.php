@@ -30,13 +30,30 @@
 					</li>
 				</ul>
 			</div>
+			
 			<div class="right-link">
-				<a href="/login">
-					<i class="fa  fa-user"></i>Login \ Register</a>
-			</div>
-			<div class="right-link">
-				<a href="/account">
+				@guest
+                    <a href="{{ route('login') }}"><i class="fa  fa-user"></i>Login</a>
+                    <!-- <a href="{{ route('register') }}"><i class="fa  fa-user"></i>Register</a> -->
+				@else
+					<a href="/account">
 					<i class="fa  fa-user"></i>My Account</a>
+
+						<!-- <ul class="dropdown-menu">
+							<li>
+								<a href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+												document.getElementById('logout-form').submit();">
+									Logout
+								</a>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									{{ csrf_field() }}
+								</form>
+							</li>
+						</ul>
+					</li> -->
+				@endguest
 			</div>
 		</div>
 	</div>
