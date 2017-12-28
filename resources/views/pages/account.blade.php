@@ -21,7 +21,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2">Name:</label>
 							<div class="col-sm-10">
-								<input type="email" value="{{$user['name']}}" class="form-control" placeholder="Name">
+								<input type="text" value="{{$user['name']}}" class="form-control" placeholder="Name">
 							</div>
 						</div>
 						<div class="form-group">
@@ -65,6 +65,11 @@
 								<textarea style="resize: vertical;display: inline-block;width: 99%;overflow-x: hidden" class="form-control" rows="5">{{$user['info'] ?? ''}}</textarea>
 							</div>
 						</div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button class="btn">Update profile</button>
+                            </div>
+                        </div>
 					</form>
 			</div>
 			<div class="tab-content order-con">

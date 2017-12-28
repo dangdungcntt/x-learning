@@ -19,9 +19,10 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="{{ $active['home'] }}">
-							<a href="/">Home </a>
-						</li>
+						{{--<li class="{{ $active['home'] }}">--}}
+							{{--<a href="/">Home </a>--}}
+						{{--</li>--}}
+
 						<li class="{{ $active['courses'] }} mega-menu sub-menu">
 							<a href="/courses">Courses</a>
 							<div class="menu-view">
@@ -78,14 +79,16 @@
 								</div>
 							</div>
 						</li>
+
 						<li class="{{ $active['instructors'] }}">
 							<a href="/instructors">Instructors </a>
 						</li>
+
 						<li class="{{ $active['contact'] }}">
 							<a href="/contact">Contact us </a>
 						</li>
-						<li class="{{ $active['mycourses'] }}">
-							<a href="/my-courses">My courses</a>
+						<li class="{{ $active['teaching'] }}">
+							<a href="/teaching">Become an Instructor</a>
 						</li>
 					</ul>
 				</div>

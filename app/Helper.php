@@ -7,11 +7,10 @@
 function getActiveMenu($key = '')
 {
     $active = [
-        'home' => '',
         'courses' => '',
         'instructors' => '',
         'contact' => '',
-        'mycourses' => ''
+        'teaching' => ''
     ];
     if (!empty($key)) $active[$key] = 'active';
     return $active;

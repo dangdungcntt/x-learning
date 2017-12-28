@@ -28,6 +28,6 @@ class HomeController extends Controller
 
             return view('home');
         }
-        return redirect('/')->with('status', 'success');
+        return redirect('/');
     }
 }

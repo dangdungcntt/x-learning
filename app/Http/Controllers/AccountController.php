@@ -30,7 +30,7 @@ class AccountController extends Controller
         $view = 'pages.my-courses';
         $data = [
             'title' => $title,
-            'active' => getActiveMenu('mycourses')
+            'active' => getActiveMenu()
         ];
         return view($view, $data);
     }

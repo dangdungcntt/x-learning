@@ -26,6 +26,7 @@
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
+
 Route::get('/', 'PageController@home');
 Route::get('/contact', 'PageController@contact');
 
@@ -35,4 +36,4 @@ Route::get('/my-courses', 'AccountController@myCourses');
 Route::resource('instructors','InstructorController');
 Route::resource('courses','CourseController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

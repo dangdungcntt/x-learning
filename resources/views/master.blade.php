@@ -8,7 +8,8 @@
 
 		@include('layouts.top')
         @include('layouts.header')
-        @include('layouts.banner')
+
+        @if (!isset($showBanner) || $showBanner) @include('layouts.banner') @endif
 
 		@if (session('status'))
 			<div class="alert alert-success">

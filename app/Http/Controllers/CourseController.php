@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CourseController extends Controller
 {
@@ -31,7 +32,15 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        if (Gate::allows('admin', auth()->user())) {
+            return 'GOOD';
+        }
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404', $data);
     }
 
     /**

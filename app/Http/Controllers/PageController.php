@@ -12,7 +12,7 @@ class PageController extends Controller
         $view = 'pages.home';
         $data = [
             'title' => $title,
-            'active' => getActiveMenu('home')
+            'active' => getActiveMenu()
         ];
         return view($view, $data);
     }

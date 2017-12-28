@@ -20,6 +20,16 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
+    public function showLinkRequestForm()
+    {
+        $title = 'Forgot Password';
+        $data = [
+            'title' => $title,
+            'active' => getActiveMenu()
+        ];
+        return view('auth.passwords.email')->with($data);
+    }
+
     /**
      * Create a new controller instance.
      *

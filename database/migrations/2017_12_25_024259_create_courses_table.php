@@ -16,7 +16,10 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('detail');
+            $table->text('description');
+            $table->string('details');
+            $table->double('price');
+            $table->integer('max_students');
             $table->integer('type')->unsigned()->nullable();
             $table->dateTime('start_at');
             $table->dateTime('end_at');
@@ -28,6 +31,7 @@ class CreateCoursesTable extends Migration
               ->references('id')->on('teachers')
               ->onDelete('set null')
               ->onUpdate('cascade');
+            $table->boolean('public');
             $table->timestamps();
         });
     }
