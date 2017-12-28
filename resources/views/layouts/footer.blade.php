@@ -1,5 +1,5 @@
 <footer id="footer">
-	<div class="footer-top">
+	@if (!isset($showFooter) || $showFooter) <div class="footer-top">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-3">
@@ -106,7 +106,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> @endif
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8">

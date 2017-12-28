@@ -33,14 +33,22 @@ class CourseController extends Controller
     public function create()
     {
         if (Gate::allows('admin', auth()->user())) {
-            return 'GOOD';
+            $title = 'Create Course';
+            $view = 'courses.create';
+            $data = [
+                'title' => $title,
+                'active' => getActiveMenu(),
+                'showBanner' => false,
+                'showFooter' => false
+            ];
+            return view($view)->with($data);
         }
         $data = [
             'title' => 'Not found',
             'active' => getActiveMenu(),
             'showBanner' => false
         ];
-        return view('pages.404', $data);
+        return view('pages.404')->with($data);
     }
 
     /**
