@@ -24,7 +24,12 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 
     /**
@@ -35,7 +40,12 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 
     /**
@@ -57,7 +67,12 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon)
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 
     /**
@@ -69,7 +84,12 @@ class CouponController extends Controller
      */
     public function update(Request $request, Coupon $coupon)
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 
     /**
@@ -80,6 +100,11 @@ class CouponController extends Controller
      */
     public function destroy(Coupon $coupon)
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 }

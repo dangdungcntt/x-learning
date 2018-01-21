@@ -17,7 +17,7 @@
 				</ul>
 			</div>
 			<div class="tab-content profile-con open">
-				<form class="form-horizontal" action="/action_page.php">
+				<form class="form-horizontal">
 						<div class="form-group">
 							<label class="control-label col-sm-2">Name:</label>
 							<div class="col-sm-10">

@@ -15,7 +15,7 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $params = $request->all();
-        $title = 'Courses - Academy';
+        $title = 'Course - Academy';
         $view = 'courses.list';
         $data = [
             'title' => $title,
@@ -32,17 +32,6 @@ class CourseController extends Controller
      */
     public function create()
     {
-        if (Gate::allows('admin', auth()->user())) {
-            $title = 'Create Course';
-            $view = 'courses.create';
-            $data = [
-                'title' => $title,
-                'active' => getActiveMenu(),
-                'showBanner' => false,
-                'showFooter' => false
-            ];
-            return view($view)->with($data);
-        }
         $data = [
             'title' => 'Not found',
             'active' => getActiveMenu(),
@@ -59,9 +48,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        if (Gate::allows('admin', auth()->user())) {
-
-        }
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 
     /**
@@ -91,7 +83,12 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 
     /**
@@ -103,7 +100,12 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 
     /**
@@ -114,6 +116,11 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = [
+            'title' => 'Not found',
+            'active' => getActiveMenu(),
+            'showBanner' => false
+        ];
+        return view('pages.404')->with($data);
     }
 }

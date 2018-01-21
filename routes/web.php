@@ -12,28 +12,26 @@
 */
 
 
-// Route::get('/*', function() {
-//     $title = 'Page not found';
-//     $view = 'pages.404';
-//     $data = [
-//         'title' => $title,
-//         'active' => getMenuActive()
-//     ];
-//     return view($view, $data);
-// });
-
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
 Route::get('/', 'PageController@home');
 Route::get('/contact', 'PageController@contact');
-
 Route::get('/account', 'AccountController@show');
 Route::get('/my-courses', 'AccountController@myCourses');
 
 Route::resource('instructors','InstructorController');
 Route::resource('courses','CourseController');
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'Admin\AdminController@index');
+
+    Route::resource('courses','Admin\CourseAdminController', ['as' => 'admin']);
+    Route::resource('coupons','Admin\CouponAdminController', ['as' => 'admin']);
+    Route::resource('orders','Admin\OrderAdminController', ['as' => 'admin']);
+    Route::resource('users','Admin\UserAdminController', ['as' => 'admin']);
+
+});

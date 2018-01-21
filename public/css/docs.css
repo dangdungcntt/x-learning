@@ -23,7 +23,7 @@
   9. All trasform css
   10. Button style2
   11. Breadcrumb
-  12. Courses Listing
+  12. Course Listing
   13. Pagination
   14. Contact Us
   15. About Us
@@ -376,7 +376,7 @@ textarea {-webkit-appearance:none; -moz-appearance: none; -o-appearance: none; -
 .breadcrumb ul li:hover a {color:#02cbf7; }
 /*=-=-=-=-=-=-=-=-=-=-=- Breadcrumb end -=-=-=-=-=-=-=-=-=-=-=*/
 
-/*=-=-=-=-=-=-=-=-=-=-=- Courses Listing start -=-=-=-=-=-=-=-=-=-=-=*/
+/*=-=-=-=-=-=-=-=-=-=-=- Course Listing start -=-=-=-=-=-=-=-=-=-=-=*/
 .courses-view {padding:50px 0; }
 .courses-view .filter-row {background:#f6f6f6; padding:15px; display:inline-block; width:100%; margin-bottom:40px;}
 .courses-view .filter-row .view-type {display:inline-block; width:auto; }
@@ -421,7 +421,7 @@ textarea {-webkit-appearance:none; -moz-appearance: none; -o-appearance: none; -
 .list-view .course-post .expert {font-size:16px; line-height:28px; padding-bottom:0px; }
 .list-view .course-post .view-btn2 {display:block; width:auto; margin:20px 0 0 0; }
 .list-view .course-post .view-btn2 .btn {text-transform:uppercase; font-size:16px; padding:5px 20px;}
-/*=-=-=-=-=-=-=-=-=-=-=- Courses Listing end -=-=-=-=-=-=-=-=-=-=-=*/
+/*=-=-=-=-=-=-=-=-=-=-=- Course Listing end -=-=-=-=-=-=-=-=-=-=-=*/
 
 /*=-=-=-=-=-=-=-=-=-=-=- Pagination start -=-=-=-=-=-=-=-=-=-=-=*/
 .pagination {margin:0px; text-align:center; width:100%; margin-top:20px; }
