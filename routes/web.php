@@ -11,27 +11,18 @@
 |
 */
 
-
-
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+//frontend
 
-Route::get('/', 'PageController@home');
-Route::get('/contact', 'PageController@contact');
-Route::get('/account', 'AccountController@show');
-Route::get('/my-courses', 'AccountController@myCourses');
+Route::get('/', 'Frontend\FrontendController@home');
+Route::get('contact', 'Frontend\FrontendController@contact');
 
-Route::resource('instructors','InstructorController');
-Route::resource('courses','CourseController');
+Route::get('account', 'Frontend\AccountController@index');
+Route::get('account/courses', 'Frontend\AccountController@courses');
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', 'Admin\AdminController@index');
+Route::get('instructors', 'Frontend\InstructorController@index');
+Route::get('instructors/{id}/{slug?}', 'Frontend\InstructorController@show');
 
-    Route::resource('courses','Admin\CourseAdminController', ['as' => 'admin']);
-    Route::resource('coupons','Admin\CouponAdminController', ['as' => 'admin']);
-    Route::resource('orders','Admin\OrderAdminController', ['as' => 'admin']);
-    Route::resource('users','Admin\UserAdminController', ['as' => 'admin']);
-
-});
+Route::get('courses', 'Frontend\CourseController@index');
+Route::get('courses/{id}/{slug?}', 'Frontend\CourseController@show');

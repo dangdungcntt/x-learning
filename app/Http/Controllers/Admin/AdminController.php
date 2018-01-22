@@ -13,7 +13,6 @@ class AdminController extends Controller
     }
 
     public function index() {
-        die('123');
-        return view('admin.master');
+        return view('admin.pages.dashboard');
     }
 }

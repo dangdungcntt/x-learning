@@ -8,7 +8,6 @@
 function getActiveMenu($key = '')
 {
     $active = [
-        'admin-menu' => '',
         'courses' => '',
         'instructors' => '',
         'contact' => '',
