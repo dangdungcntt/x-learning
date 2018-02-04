@@ -1,31 +1,19 @@
-<script src="{{asset('admin-asset/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
-<script src="{{asset('admin-asset/assets/js/popper.min.js')}}"></script>
-<script src="{{asset('admin-asset/assets/js/plugins.js')}}"></script>
-<script src="{{asset('admin-asset/assets/js/main.js')}}"></script>
+<!-- Mainly scripts -->
+<script src="{{asset('js/jquery-2.1.1.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+<script src="{{asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
+<!-- Flot -->
+<script src="{{asset('js/plugins/flot/jquery.flot.js')}}"></script>
+<script src="{{asset('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script>
+<script src="{{asset('js/plugins/flot/jquery.flot.spline.js')}}"></script>
+<script src="{{asset('js/plugins/flot/jquery.flot.resize.js')}}"></script>
+<script src="{{asset('js/plugins/flot/jquery.flot.pie.js')}}"></script>
 
-<script src="{{asset('admin-asset/assets/js/lib/chart-js/Chart.bundle.js')}}"></script>
-<script src="{{asset('admin-asset/assets/js/dashboard.js')}}"></script>
-<script src="{{asset('admin-asset/assets/js/widgets.js')}}"></script>
-{{--<script src="{{asset('admin-asset/assets/js/lib/vector-map/jquery.vmap.js')}}"></script>--}}
-{{--<script src="{{asset('admin-asset/assets/js/lib/vector-map/jquery.vmap.min.js')}}"></script>--}}
-{{--<script src="{{asset('admin-asset/assets/js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>--}}
-{{--<script src="{{asset('admin-asset/assets/js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>--}}
-{{--<script>--}}
-    {{--(function ($) {--}}
-        {{--"use strict";--}}
+<!-- Custom and plugin javascript -->
+<script src="{{asset('js/inspinia.js')}}"></script>
+<script src="{{asset('js/plugins/pace/pace.min.js')}}"></script>
 
-        {{--jQuery('#vmap').vectorMap({--}}
-            {{--map: 'world_en',--}}
-            {{--backgroundColor: null,--}}
-            {{--color: '#ffffff',--}}
-            {{--hoverOpacity: 0.7,--}}
-            {{--selectedColor: '#1de9b6',--}}
-            {{--enableZoom: true,--}}
-            {{--showTooltip: true,--}}
-            {{--values: sample_data,--}}
-            {{--scaleColors: ['#1de9b6', '#03a9f5'],--}}
-            {{--normalizeFunction: 'polynomial'--}}
-        {{--});--}}
-    {{--})(jQuery);--}}
-{{--</script>--}}
+<!-- jQuery UI -->
+<script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
