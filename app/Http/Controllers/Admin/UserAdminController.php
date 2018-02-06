@@ -22,14 +22,13 @@ class UserAdminController extends Controller
     {
         $curUser = auth()->user();
         $permission = $curUser->permission;
-//        die(json_encode($curUser->permission));
+
         $listUsers = User::where('permission', '<', $permission)->get();
         $view = 'admin.users.list';
         $data = [
             'title' => 'List user',
-            'active' => getActiveMenu('admin-menu'),
-            'listUsers' => $listUsers,
-            'showBanner' => false
+            'active' => getAdminActiveMenu('users'),
+            'listUsers' => $listUsers
         ];
         return view($view, $data);
     }
@@ -43,9 +42,8 @@ class UserAdminController extends Controller
     {
         $view = 'admin.users.create';
         $data = [
-            'title' => 'Create new user',
-            'active' => getActiveMenu('admin-menu'),
-            'showBanner' => false
+            'title' => 'Create user',
+            'active' => getAdminActiveMenu('user/create')
         ];
         return view($view, $data);
     }

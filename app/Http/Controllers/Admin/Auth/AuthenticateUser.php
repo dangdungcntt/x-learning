@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
 trait AuthenticateUser
@@ -48,8 +49,11 @@ trait AuthenticateUser
         }
 
         if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
+            if (Gate::allows('assistant', $this->guard()->user())) {
+                return $this->sendLoginResponse($request);
+            }
         }
+
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
@@ -58,6 +62,7 @@ trait AuthenticateUser
 
         return $this->sendFailedLoginResponse($request);
     }
+
 
     /**
      * Validate the user login request.

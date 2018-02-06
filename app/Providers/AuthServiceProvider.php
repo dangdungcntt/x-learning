@@ -31,6 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('assistant', function ($user) {
+//            die(var_dump($user));
             return $user->permission >= 50;
         });
     }

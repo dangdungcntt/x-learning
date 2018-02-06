@@ -17,3 +17,18 @@
 
 <!-- jQuery UI -->
 <script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+
+<script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.sidebar-collapse').slimScroll({
+            height: '100%',
+            railOpacity: 0.9
+        });
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
