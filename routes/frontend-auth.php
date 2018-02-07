@@ -6,10 +6,6 @@
  * Time: 3:08 PM
  */
 
-
-// Authentication Routes...
-use Illuminate\Support\Facades\Route;
-
 Route::get('login', 'Frontend\Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Frontend\Auth\LoginController@login');
 Route::get('logout', 'Frontend\Auth\LoginController@logout')->name('logout');

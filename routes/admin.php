@@ -8,15 +8,17 @@
 
 
 //admin area
-use Illuminate\Support\Facades\Route;
+//use Illuminate\Support\Facades\Route;
 
 Route::domain('admin.' . config('app.url'))->group(function () {
-    Route::get('/', 'Admin\AdminController@index');
-
     Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Admin\Auth\LoginController@login');
 
+    Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
+    Route::get('transactions', 'Admin\AdminController@transactions')->name('admin.transactions');
+
     Route::resource('courses', 'Admin\CourseAdminController', ['as' => 'admin']);
+    Route::resource('lessons', 'Admin\LessonController', ['as' => 'admin']);
     Route::resource('coupons', 'Admin\CouponAdminController', ['as' => 'admin']);
     Route::resource('orders', 'Admin\OrderAdminController', ['as' => 'admin']);
     Route::resource('users', 'Admin\UserAdminController', ['as' => 'admin']);

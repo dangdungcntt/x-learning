@@ -8,9 +8,6 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-
-use Illuminate\Foundation\Auth\RedirectsUsers;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -33,7 +30,7 @@ trait AuthenticateUser
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
@@ -52,6 +49,13 @@ trait AuthenticateUser
             if (Gate::allows('assistant', $this->guard()->user())) {
                 return $this->sendLoginResponse($request);
             }
+            else {
+                $this->guard()->logout();
+
+                $request->session()->invalidate();
+
+                return redirect('/login')->with('error', trans('auth.failed'));
+            }
         }
 
 
@@ -67,7 +71,7 @@ trait AuthenticateUser
     /**
      * Validate the user login request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return void
      */
     protected function validateLogin(Request $request)
@@ -81,7 +85,7 @@ trait AuthenticateUser
     /**
      * Attempt to log the user into the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return bool
      */
     protected function attemptLogin(Request $request)
@@ -94,7 +98,7 @@ trait AuthenticateUser
     /**
      * Get the needed authorization credentials from the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return array
      */
     protected function credentials(Request $request)
@@ -105,7 +109,7 @@ trait AuthenticateUser
     /**
      * Send the response after the user was authenticated.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     protected function sendLoginResponse(Request $request)
@@ -121,8 +125,8 @@ trait AuthenticateUser
     /**
      * The user has been authenticated.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed $user
      * @return mixed
      */
     protected function authenticated(Request $request, $user)
@@ -133,7 +137,7 @@ trait AuthenticateUser
     /**
      * Get the failed login response instance.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws ValidationException
@@ -158,7 +162,7 @@ trait AuthenticateUser
     /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)

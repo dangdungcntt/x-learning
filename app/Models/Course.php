@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class Course extends Model
     public function users()
     {
         return $this->belongsToMany(
-            'App\Users',
+            'App\Models\Users',
             'course_user',
             'user_id',
             'course_id');
@@ -22,7 +22,7 @@ class Course extends Model
     public function wish_users()
     {
         return $this->belongsToMany(
-            'App\Users',
+            'App\Models\Users',
             'wishs_list',
             'user_id',
             'course_id');
@@ -31,7 +31,7 @@ class Course extends Model
     public function lessions()
     {
         return $this->hasMany(
-            'App\Lession',
+            'App\Models\Lesson',
             'course_id',
             'id');
     }
@@ -43,7 +43,7 @@ class Course extends Model
     public function orders()
     {
         return $this->belongsToMany(
-            'App\Orders',
+            'App\Models\Orders',
             'order_details',
             'order_id',
             'course_id');

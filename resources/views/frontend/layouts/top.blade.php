@@ -19,19 +19,14 @@
                     <a href="{{ route('login') }}"><i class="fa  fa-sign-in"></i>Login </a> /
 					<a href="{{ route('register') }}"> <i class="fa  fa-user-plus"></i>Register</a>
 				@else
-					<a href="/my-courses">
+					<a href="{{route('account.courses')}}">
 						<i class="fa fa-book"></i>My Courses
 					</a> /
-					<a href="/account">
+					<a href="{{route('account')}}">
 						<i class="fa fa-user"></i>My Account
 					</a> /
-					<a href="{{ route('logout') }}"
-						onclick="event.preventDefault();
-									document.getElementById('logout-form').submit();">
+					<a href="{{ route('logout') }}">
 						<i class="fa fa-sign-out"></i>Logout
-						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-							{{ csrf_field() }}
-						</form>
 					</a>
 				@endguest
 			</div>

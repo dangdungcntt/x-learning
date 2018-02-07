@@ -11,18 +11,17 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
-
 //frontend
 
-Route::get('/', 'Frontend\FrontendController@home');
-Route::get('contact', 'Frontend\FrontendController@contact');
+Route::get('/', 'Frontend\FrontendController@home')->name('home');
+Route::get('contact', 'Frontend\FrontendController@contact')->name('contact');
+Route::get('teaching', 'Frontend\FrontendController@teaching')->name('teaching');
 
-Route::get('account', 'Frontend\AccountController@index');
-Route::get('account/courses', 'Frontend\AccountController@courses');
+Route::get('account', 'Frontend\AccountController@index')->name('account');
+Route::get('account/courses', 'Frontend\AccountController@courses')->name('account.courses');
 
-Route::get('instructors', 'Frontend\InstructorController@index');
-Route::get('instructors/{id}/{slug?}', 'Frontend\InstructorController@show');
+Route::get('instructors', 'Frontend\InstructorController@index')->name('instructors');
+Route::get('instructors/{id}/{slug?}', 'Frontend\InstructorController@show')->name('instructors.show');
 
-Route::get('courses', 'Frontend\CourseController@index');
-Route::get('courses/{id}/{slug?}', 'Frontend\CourseController@show');
+Route::get('courses', 'Frontend\CourseController@index')->name('courses');
+Route::get('courses/{id}/{slug?}', 'Frontend\CourseController@show')->name('courses.show');

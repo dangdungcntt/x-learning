@@ -29,5 +29,16 @@ class FrontendController extends Controller
         return view($view, $data);
     }
 
+    public function teaching()
+    {
+        $title = 'Teaching - Academy';
+        $view = 'test';
+        $data = [
+            'title' => $title,
+            'active' => getActiveMenu('teaching')
+        ];
+        return view($view, $data);
+    }
+
 
 }

@@ -20,4 +20,13 @@ class AdminController extends Controller
         ];
         return view($view, $data);
     }
+
+    public function transactions() {
+        $view = 'admin.pages.transactions';
+        $data = [
+            'title' => 'Transactions',
+            'active' => getAdminActiveMenu('transactions')
+        ];
+        return view($view, $data);
+    }
 }

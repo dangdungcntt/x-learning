@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,7 +17,7 @@ class Oder extends Model
     }
 
     public function user() {
-        return $this->hasOne('App\Uses', 'id', 'user_id');
+        return $this->hasOne('App\Models\Uses', 'id', 'user_id');
     }
 
     public function courses()

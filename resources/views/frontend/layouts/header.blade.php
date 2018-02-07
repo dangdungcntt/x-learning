@@ -13,14 +13,14 @@
                     </button>
                 </div>
                 <div class="cart-box">
-                    <a href="cart.html">
+                    <a href="#">
                         <i class="fa fa-shopping-basket"></i>
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="{{ $active['courses'] }} mega-menu sub-menu">
-                            <a href="/courses">Courses</a>
+                            <a href="{{route('courses')}}">Courses</a>
                             <div class="menu-view">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -77,14 +77,14 @@
                         </li>
 
                         <li class="{{ $active['instructors'] }}">
-                            <a href="/instructors">Instructors </a>
+                            <a href="{{route('instructors')}}">Instructors </a>
                         </li>
 
                         <li class="{{ $active['contact'] }}">
-                            <a href="/contact">Contact us </a>
+                            <a href="{{route('contact')}}">Contact us </a>
                         </li>
                         <li class="{{ $active['teaching'] }}">
-                            <a href="/teaching">Become an Instructor</a>
+                            <a href="{{route('teaching')}}">Become an Instructor</a>
                         </li>
                     </ul>
                 </div>

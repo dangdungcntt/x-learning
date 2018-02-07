@@ -12,6 +12,11 @@
             <h3>Admin</h3>
             <form class="m-t" role="form" method="POST" action="{{route('admin.login')}}">
                 {{ csrf_field() }}
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{session('error')}}
+                    </div>
+                @endif
                 <div class="form-group">
                     <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>

@@ -1,6 +1,6 @@
-.require-color {
-    color: red;
-}
+/*.nav.navbar-nav li a {*/
+    /*text-transform: uppercase;*/
+/*}*/
 
 textarea {
     border: solid 1px #e0e0e0;
@@ -10,7 +10,6 @@ textarea {
     line-height: 20px;
     padding: 10px 12px;
     width: 100%;
-    resize: vertical;
 }
 
 .preview-img{max-width:250px;position:relative;border:1px solid #ccc;margin-top:10px;background:url(/images/no-img.jpg) center no-repeat}
