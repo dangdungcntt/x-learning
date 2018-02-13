@@ -19,7 +19,11 @@ class CouponAdminController extends Controller
      */
     public function index()
     {
-        //
+        $view = 'admin.coupons.list';
+        $data = [
+            'active' => getAdminActiveMenu('coupons/index'),
+        ];
+        return view($view, $data);
     }
 
     /**
@@ -29,7 +33,11 @@ class CouponAdminController extends Controller
      */
     public function create()
     {
-        //
+        $view = 'admin.coupons.create';
+        $data = [
+            'active' => getAdminActiveMenu('coupons/create')
+        ];
+        return view($view)->with($data);
     }
 
     /**

@@ -13,7 +13,7 @@
                             </span>
                             <span class="text-muted text-xs block">
                                 Art Director
-                                <b class="caret"></b>\
+                                <b class="caret"></b>
                             </span>
                         </span>
                     </a>
@@ -47,11 +47,23 @@
                     <li class="{{$active['courses/create']}}">
                         <a href="{{route('admin.courses.create')}}">Add new course</a>
                     </li>
+                    <li class="{{$active['courses/index']}}">
+                        <a href="{{route('admin.courses.index')}}">All courses</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="{{$active['lessons']}}">
+                <a href="#">
+                    <i class="fa fa-briefcase"></i>
+                    <span class="nav-label">Lessons</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
                     <li class="{{$active['lessons/create']}}">
                         <a href="{{route('admin.lessons.create')}}">Add new lesson</a>
                     </li>
-                    <li class="{{$active['courses/index']}}">
-                        <a href="{{route('admin.courses.index')}}">All courses</a>
+                    <li class="{{$active['lessons/index']}}">
+                        <a href="{{route('admin.lessons.index')}}">All lessons</a>
                     </li>
                 </ul>
             </li>
@@ -76,7 +88,7 @@
                     <span class="nav-label">Orders</span>
                     <span class="fa arrow"></span>
                 </a>
-                <ul class="nav nav-second-levorderel collapse">
+                <ul class="nav nav-second-level collapse">
                     <li class="{{$active['orders/create']}}">
                         <a href="{{route('admin.orders.create')}}">Add new order</a>
                     </li>

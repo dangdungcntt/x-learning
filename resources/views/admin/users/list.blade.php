@@ -1,5 +1,7 @@
 @extends('admin.master')
 
+@section('title', 'All users')
+
 @section('style')
     <style>
         .project-people {

@@ -26,7 +26,6 @@ class UserAdminController extends Controller
         $listUsers = User::where('permission', '<', $permission)->get();
         $view = 'admin.users.list';
         $data = [
-            'title' => 'List user',
             'active' => getAdminActiveMenu('users/index'),
             'listUsers' => $listUsers
         ];
@@ -42,7 +41,6 @@ class UserAdminController extends Controller
     {
         $view = 'admin.users.create';
         $data = [
-            'title' => 'Create user',
             'active' => getAdminActiveMenu('users/create')
         ];
         return view($view, $data);

@@ -1,6 +1,6 @@
 <?php
 /**
-* get active array for menu
+* get active array for admin menu
 *
 * @param $key
 * @return array
@@ -34,7 +34,7 @@ function getAdminActiveMenu($key = '')
     $array = explode('/', $key);
     if (count($array) > 1) {
         $active[$array[0]] = 'active';
-        $active[$array[0].'/'.$array[1]] = 'active';
+        $active[$key] = 'active';
     } else if (!empty($key)) $active[$key] = 'active';
 
     return $active;

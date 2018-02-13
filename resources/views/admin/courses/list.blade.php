@@ -1,20 +1,20 @@
 @extends('admin.master')
 
-@section('title', 'Add new user')
+@section('title', 'All courses')
 
 @section('breadcrumb')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
-            <h2>Add new course</h2>
+            <h2>All courses</h2>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{route('admin.dashboard')}}">Dashboard </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.users.index')}}">Users </a>
+                    <a href="{{route('admin.courses.index')}}">Courses</a>
                 </li>
                 <li class="active">
-                    <strong>Add new user</strong>
+                    <strong>All courses</strong>
                 </li>
             </ol>
         </div>
@@ -22,5 +22,5 @@
 @endsection
 
 @section('content')
-    add new user
+    list
 @endsection

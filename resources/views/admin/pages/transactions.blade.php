@@ -1,5 +1,6 @@
 @extends('admin.master')
 
+@section('title', 'Transactions')
 
 @section('breadcrumb')
     <div class="row wrapper border-bottom white-bg page-heading">
