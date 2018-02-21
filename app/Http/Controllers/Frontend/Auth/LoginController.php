@@ -23,7 +23,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return 'hello';
+//        return 'hello';
         $title = 'Login - Academy';
         $view = 'frontend.auth.login';
         $data = [
