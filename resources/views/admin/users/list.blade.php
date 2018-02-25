@@ -67,7 +67,8 @@
                 <div class="col-md-11">
                     <form action="{{route('admin.users.search')}}" method="GET">
                         <div class="input-group">
-                            <input type="text" placeholder="Search for: name, emai, phone, skype" name="q" class="input-sm form-control">
+                            <input type="text" placeholder="Search for: name, emai, phone, skype" name="q"
+                                   class="input-sm form-control">
                             <span class="input-group-btn">
                             <button type="button" class="btn btn-sm btn-primary"> Search!</button>
                         </span>
@@ -80,12 +81,14 @@
 
                 <table class="table table-hover">
                     <thead>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Skype</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Skype</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($listUsers as $user)
@@ -113,7 +116,8 @@
                                 <a href="{{route("admin.users.edit", $user->id)}}" class="btn btn-success btn-sm"><i
                                             class="fa fa-pencil"></i> Edit
                                 </a>
-                                <button end-point="{{route('admin.users.destroy', $user->id)}}" user-name="{{$user->name}}" class="btn btn-danger btn-sm btn-delete"><i
+                                <button end-point="{{route('admin.users.destroy', $user->id)}}"
+                                        user-name="{{$user->name}}" class="btn btn-danger btn-sm btn-delete"><i
                                             class="fa fa-trash"></i> Delete
                                 </button>
                             </td>
@@ -147,9 +151,6 @@
                         if (willDelete) {
                             //ajax to delete here
                             deleteUser(this, name, endPoint);
-
-                        } else {
-                            swal("Your user is safe!");
                         }
                     });
             })
