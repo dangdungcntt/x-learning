@@ -18,6 +18,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content">
+                    @if (session('flash_success'))
+                        <div class="alert alert-success">
+                            {{ session('flash_success') }}
+                        </div>
+                    @endif
+
+                    @if (session('flash_error'))
+                        <div class="alert alert-danger">
+                            {{ session('flash_error') }}
+                        </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>

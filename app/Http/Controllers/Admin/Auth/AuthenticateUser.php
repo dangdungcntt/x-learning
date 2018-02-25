@@ -64,7 +64,7 @@ trait AuthenticateUser
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
-        return $this->sendFailedLoginResponse($request);
+        return redirect()->route('admin.login')->with('error', trans('auth.failed'));
     }
 
 
@@ -132,21 +132,6 @@ trait AuthenticateUser
     protected function authenticated(Request $request, $user)
     {
         //
-    }
-
-    /**
-     * Get the failed login response instance.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws ValidationException
-     */
-    protected function sendFailedLoginResponse(Request $request)
-    {
-        throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);
     }
 
     /**

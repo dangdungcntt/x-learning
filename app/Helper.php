@@ -57,3 +57,8 @@ function getActiveMenu($key = '')
     if (!empty($key)) $active[$key] = 'active';
     return $active;
 }
+
+function getUserPermission() {
+    $curUser = auth()->user();
+    return $curUser->permission;
+}

@@ -14,6 +14,7 @@
 <!-- Custom and plugin javascript -->
 <script src="{{asset('js/inspinia.js')}}"></script>
 <script src="{{asset('js/plugins/pace/pace.min.js')}}"></script>
+<script src="{{asset('js/plugins/sweetalert/sweetalert.min.js')}}"></script>
 
 <!-- jQuery UI -->
 <script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>

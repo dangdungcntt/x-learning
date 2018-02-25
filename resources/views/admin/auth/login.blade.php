@@ -9,7 +9,7 @@
                 <h1 class="logo-name">ITC</h1>
 
             </div>
-            <h3>Admin</h3>
+            <h3>Admin area</h3>
             <form class="m-t" role="form" method="POST" action="{{route('admin.login')}}">
                 {{ csrf_field() }}
                 @if (session('error'))

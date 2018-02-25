@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Add new user')
+@section('title', 'Edit user')
 
 @section('breadcrumb')
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -14,7 +14,7 @@
                     <a href="{{route('admin.users.index')}}">Users </a>
                 </li>
                 <li class="active">
-                    <strong>Add new user</strong>
+                    <strong>Edit user</strong>
                 </li>
             </ol>
         </div>
@@ -24,56 +24,57 @@
 @section('content')
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-
-            {{--<div class="ibox-tools">--}}
-                {{--<a class="collapse-link">--}}
-                    {{--<i class="fa fa-chevron-up"></i>--}}
-                {{--</a>--}}
-            {{--</div>--}}
         </div>
         <div class="ibox-content">
-            <form method="POST" action="{{route("admin.users.store")}}" class="form-horizontal"
+            <form method="POST" action="{{route("admin.users.update", $user->id)}}" class="form-horizontal"
                   autocomplete="off">
                 {{ csrf_field() }}
+                {{ method_field("PUT") }}
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="name">Name</label>
                     <div class="col-sm-10 {{ $errors->has('name') ? ' has-error' : '' }}">
-                        <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}"/>
+                        <input type="text" id="name" class="form-control" name="name"
+                               value="{{old('name') ?? $user->name}}"/>
                         @if ($errors->has('name'))
                             <span class="help-block m-b-none text-danger">
-                                            {{$errors->first('name')}}
-                                        </span>
+                                {{$errors->first('name')}}
+                            </span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="email">Email</label>
                     <div class="col-sm-10 {{ $errors->has('email') ? ' has-error' : '' }}">
-                        <input type="text" id="email" class="form-control" name="email" value="{{ old('email') }}"/>
+                        <input type="text" id="email" class="form-control" name="email"
+                               value="{{old('email') ?? $user->email }}"/>
                         @if ($errors->has('email'))
                             <span class="help-block m-b-none text-danger">
-                                            {{$errors->first('email')}}
-                                        </span>
+                                {{$errors->first('email')}}
+                            </span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="password">Password</label>
-                    <div class="col-sm-10 {{ $errors->has('password') ? ' has-error' : '' }}">
-                        <input type="password" id="password" class="form-control" name="password"
-                               autocomplete="new-password" value="{{ old('password') }}"/>
-                        @if ($errors->has('password'))
+                    <label class="col-sm-2 control-label" for="phone">Phone</label>
+                    <div class="col-sm-10 {{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <input type="text" id="phone" class="form-control" name="phone"
+                               autocomplete="new-password" value="{{old('phone') ?? $user->phone }}"/>
+                        @if ($errors->has('phone'))
                             <span class="help-block m-b-none text-danger">
-                                            {{$errors->first('password')}}
-                                        </span>
+                                {{$errors->first('phone')}}
+                            </span>
                         @endif
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <div class="col-sm-4 col-sm-offset-2">
-                        <button class="btn btn-primary" type="submit">Add user</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        @if (old('name'))
+                            <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-white" type="submit">Cancel</a>
+                        @endif
+
                     </div>
                 </div>
             </form>

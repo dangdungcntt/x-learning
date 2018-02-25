@@ -3,6 +3,6 @@
 
     </div>
     <div>
-        <strong>Copyright</strong> ITCourse &copy; 2017
+        <strong>Copyright</strong> ITCourse &copy; 2018
     </div>
 </div>
