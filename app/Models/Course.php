@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    protected $table = "courses";
+
     public function course_type() {
         return $this->hasOne('App\CourseType', 'id', 'type');
     }

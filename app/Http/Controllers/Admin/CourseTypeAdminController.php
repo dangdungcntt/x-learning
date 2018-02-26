@@ -3,17 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
+use App\Models\CourseType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
-class CourseAdminController extends Controller
+class CourseTypeAdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,14 +15,16 @@ class CourseAdminController extends Controller
      */
     public function index()
     {
-        $listCourses = Course::paginate(10);
-
-        $view = 'admin.courses.list';
+        $listCourseTypes = CourseType::paginate(10);
+//        dd($listCourseTypes);
         $data = [
-            'active' => getAdminActiveMenu('courses/index'),
-            'listCourses' => $listCourses
+            'active' => getAdminActiveMenu('courses/types/index'),
+            'listCourseTypes' => $listCourseTypes
         ];
-        return view($view, $data);
+
+//        dd(getAdminActiveMenu('courses/types/index'));
+
+        return view('admin.courses.types.list', $data);
     }
 
     /**
@@ -38,28 +34,24 @@ class CourseAdminController extends Controller
      */
     public function create()
     {
-        $view = 'admin.courses.create';
-        $data = [
-            'active' => getAdminActiveMenu('courses/create')
-        ];
-        return view($view)->with($data);
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return json_encode($request);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,7 +62,7 @@ class CourseAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -81,8 +73,8 @@ class CourseAdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -93,7 +85,7 @@ class CourseAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

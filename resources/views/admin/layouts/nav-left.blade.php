@@ -50,6 +50,18 @@
                     <li class="{{$active['courses/index']}}">
                         <a href="{{route('admin.courses.index')}}">All courses</a>
                     </li>
+                    <li class="{{$active['courses/types']}}">
+                        <a href="#">Types <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level collapse" aria-expanded="true" style="">
+                            <li {{$active['courses/types/create']}}>
+                                <a href="{{route('admin.courses.types.create')}}">Add course type</a>
+                            </li>
+                            <li class="{{$active['courses/types/index']}}">
+                                <a href="{{route('admin.courses.types.index')}}">All course type</a>
+                            </li>
+
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li class="{{$active['lessons']}}">

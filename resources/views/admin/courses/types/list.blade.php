@@ -1,20 +1,23 @@
 @extends('admin.master')
 
-@section('title', 'All courses')
+@section('title', 'All course types')
 
 @section('breadcrumb')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
-            <h2>All courses</h2>
+            <h2>All course types</h2>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{route('admin.dashboard')}}">Dashboard </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.courses.index')}}">Courses</a>
+                    <a href="{{route('admin.courses.index')}}">Courses </a>
+                </li>
+                <li>
+                    <a href="{{route('admin.courses.types.index')}}">Types </a>
                 </li>
                 <li class="active">
-                    <strong>All courses</strong>
+                    <strong>All type</strong>
                 </li>
             </ol>
         </div>
@@ -66,7 +69,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($listCourses as $course)
+                    @foreach($listCourseTypes as $courseType)
                         <tr>
                             <td>1</td>
                             <td class="project-people">
@@ -99,7 +102,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                {{ $listCourses->appends(Request::only('q'))->links('admin.vendor.pagination.default') }}
+                {{ $listCourseTypes->appends(Request::only('q'))->links('admin.vendor.pagination.default') }}
             </div>
         </div>
     </div>

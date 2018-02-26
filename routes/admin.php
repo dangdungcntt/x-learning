@@ -19,6 +19,7 @@ Route::domain('admin.' . config('app.url'))->group(function () {
 
     Route::get("users/search", 'Admin\UserAdminController@search')->name('admin.users.search');
 
+    Route::resource('courses/types', 'Admin\CourseTypeAdminController', ['as' => 'admin.courses']);
     Route::resource('courses', 'Admin\CourseAdminController', ['as' => 'admin']);
     Route::resource('lessons', 'Admin\LessonController', ['as' => 'admin']);
     Route::resource('coupons', 'Admin\CouponAdminController', ['as' => 'admin']);

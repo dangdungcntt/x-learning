@@ -26,9 +26,9 @@
         <div class="ibox-title">
 
             {{--<div class="ibox-tools">--}}
-                {{--<a class="collapse-link">--}}
-                    {{--<i class="fa fa-chevron-up"></i>--}}
-                {{--</a>--}}
+            {{--<a class="collapse-link">--}}
+            {{--<i class="fa fa-chevron-up"></i>--}}
+            {{--</a>--}}
             {{--</div>--}}
         </div>
         <div class="ibox-content">
@@ -42,8 +42,8 @@
                         <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}"/>
                         @if ($errors->has('name'))
                             <span class="help-block m-b-none text-danger">
-                                            {{$errors->first('name')}}
-                                        </span>
+                                {{$errors->first('name')}}
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -53,8 +53,8 @@
                         <input type="text" id="email" class="form-control" name="email" value="{{ old('email') }}"/>
                         @if ($errors->has('email'))
                             <span class="help-block m-b-none text-danger">
-                                            {{$errors->first('email')}}
-                                        </span>
+                                {{$errors->first('email')}}
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -65,8 +65,8 @@
                                autocomplete="new-password" value="{{ old('password') }}"/>
                         @if ($errors->has('password'))
                             <span class="help-block m-b-none text-danger">
-                                            {{$errors->first('password')}}
-                                        </span>
+                                {{$errors->first('password')}}
+                            </span>
                         @endif
                     </div>
                 </div>

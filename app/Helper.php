@@ -14,6 +14,9 @@ function getAdminActiveMenu($key = '')
         'courses' => '',
         'courses/index' => '',
         'courses/create' => '',
+        'courses/types' => '',
+        'courses/types/index' => '',
+        'courses/types/create' => '',
         'lessons' => '',
         'lessons/index' => '',
         'lessons/create' => '',
@@ -34,6 +37,7 @@ function getAdminActiveMenu($key = '')
     $array = explode('/', $key);
     if (count($array) > 1) {
         $active[$array[0]] = 'active';
+        if (count($array) == 3) $active[$array[0] . "/" . $array[1]] = 'active';
         $active[$key] = 'active';
     } else if (!empty($key)) $active[$key] = 'active';
 
