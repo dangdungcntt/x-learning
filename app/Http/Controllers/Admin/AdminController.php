@@ -13,20 +13,18 @@ class AdminController extends Controller
     }
 
     public function index() {
-        $view = 'admin.pages.dashboard';
         $data = [
-            'title' => 'Dashboard',
             'active' => getAdminActiveMenu('dashboard')
         ];
-        return view($view, $data);
+
+        return view('admin.pages.dashboard', $data);
     }
 
     public function transactions() {
-        $view = 'admin.pages.transactions';
         $data = [
-            'title' => 'Transactions',
             'active' => getAdminActiveMenu('transactions')
         ];
-        return view($view, $data);
+
+        return view('admin.pages.transactions', $data);
     }
 }

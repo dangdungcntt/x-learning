@@ -19,11 +19,11 @@ class CouponAdminController extends Controller
      */
     public function index()
     {
-        $view = 'admin.coupons.list';
         $data = [
             'active' => getAdminActiveMenu('coupons/index'),
         ];
-        return view($view, $data);
+
+        return view('admin.coupons.list', $data);
     }
 
     /**

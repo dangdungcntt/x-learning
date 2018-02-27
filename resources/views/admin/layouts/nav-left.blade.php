@@ -45,7 +45,7 @@
                 </a>
                 <ul class="nav nav-second-level collapse">
                     <li class="{{$active['courses/create']}}">
-                        <a href="{{route('admin.courses.create')}}">Add new course</a>
+                        <a href="{{route('admin.courses.create')}}">Add course</a>
                     </li>
                     <li class="{{$active['courses/index']}}">
                         <a href="{{route('admin.courses.index')}}">All courses</a>
@@ -57,7 +57,7 @@
                                 <a href="{{route('admin.courses.types.create')}}">Add course type</a>
                             </li>
                             <li class="{{$active['courses/types/index']}}">
-                                <a href="{{route('admin.courses.types.index')}}">All course type</a>
+                                <a href="{{route('admin.courses.types.index')}}">All course types</a>
                             </li>
 
                         </ul>
@@ -72,7 +72,7 @@
                 </a>
                 <ul class="nav nav-second-level collapse">
                     <li class="{{$active['lessons/create']}}">
-                        <a href="{{route('admin.lessons.create')}}">Add new lesson</a>
+                        <a href="{{route('admin.lessons.create')}}">Add lesson</a>
                     </li>
                     <li class="{{$active['lessons/index']}}">
                         <a href="{{route('admin.lessons.index')}}">All lessons</a>
@@ -87,7 +87,7 @@
                 </a>
                 <ul class="nav nav-second-level collapse">
                     <li class="{{$active['users/create']}}">
-                        <a href="{{route('admin.users.create')}}">Add new user</a>
+                        <a href="{{route('admin.users.create')}}">Add user</a>
                     </li>
                     <li class="{{$active['users/index']}}">
                         <a href="{{route('admin.users.index')}}">All users</a>
@@ -102,7 +102,7 @@
                 </a>
                 <ul class="nav nav-second-level collapse">
                     <li class="{{$active['orders/create']}}">
-                        <a href="{{route('admin.orders.create')}}">Add new order</a>
+                        <a href="{{route('admin.orders.create')}}">Add order</a>
                     </li>
                     <li class="{{$active['orders/index']}}">
                         <a href="{{route('admin.orders.index')}}">All orders</a>
@@ -117,7 +117,7 @@
                 </a>
                 <ul class="nav nav-second-level collapse">
                     <li class="{{$active['coupons/create']}}">
-                        <a href="{{route('admin.coupons.create')}}">Add new coupon</a>
+                        <a href="{{route('admin.coupons.create')}}">Add coupon</a>
                     </li>
                     <li class="{{$active['coupons/index']}}">
                         <a href="{{route('admin.coupons.index')}}">All coupons</a>

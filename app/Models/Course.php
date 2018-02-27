@@ -8,8 +8,13 @@ class Course extends Model
 {
     protected $table = "courses";
 
+    protected $fillable = [
+        'name', 'description', 'details', 'type_id', 'price',
+        'max_students', 'num_students', 'start_at', 'end_at', 'public'
+    ];
+
     public function course_type() {
-        return $this->hasOne('App\CourseType', 'id', 'type');
+        return $this->hasOne('App\Models\CourseType', 'id', 'type_id');
     }
 
     public function users()
@@ -39,7 +44,7 @@ class Course extends Model
     }
 
     public function teacher(){
-        return $this->hasOne('App\Teacher', 'id', 'teacher_id');
+        return $this->hasOne('App\Models\User', 'id', 'teacher_id');
     }
 
     public function orders()

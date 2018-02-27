@@ -18,6 +18,8 @@ Route::domain('admin.' . config('app.url'))->group(function () {
     Route::get('transactions', 'Admin\AdminController@transactions')->name('admin.transactions');
 
     Route::get("users/search", 'Admin\UserAdminController@search')->name('admin.users.search');
+    Route::get("courses/types/search", 'Admin\CourseTypeAdminController@search')->name('admin.courses.types.search');
+    Route::get("courses/search", 'Admin\CourseAdminController@search')->name('admin.courses.search');
 
     Route::resource('courses/types', 'Admin\CourseTypeAdminController', ['as' => 'admin.courses']);
     Route::resource('courses', 'Admin\CourseAdminController', ['as' => 'admin']);

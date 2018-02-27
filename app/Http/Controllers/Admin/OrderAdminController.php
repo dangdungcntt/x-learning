@@ -19,11 +19,11 @@ class OrderAdminController extends Controller
      */
     public function index()
     {
-        $view = 'admin.orders.list';
         $data = [
             'active' => getAdminActiveMenu('orders/index')
         ];
-        return view($view, $data);
+
+        return view('admin.orders.list', $data);
     }
 
     /**
@@ -33,11 +33,11 @@ class OrderAdminController extends Controller
      */
     public function create()
     {
-        $view = 'admin.orders.create';
         $data = [
             'active' => getAdminActiveMenu('orders/create')
         ];
-        return view($view)->with($data);
+
+        return view('admin.orders.create')->with($data);
     }
 
     /**

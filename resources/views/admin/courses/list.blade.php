@@ -2,6 +2,14 @@
 
 @section('title', 'All courses')
 
+@section('style')
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+@endsection
+
 @section('breadcrumb')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
@@ -24,10 +32,12 @@
 @section('content')
     <div class="ibox">
         <div class="ibox-title">
-            @if(!empty($noti))
-                <h5>{!! $noti !!}</h5>
-            @endif
-
+            <h5>
+                {{"Page " . $listCourses->currentPage() . "/" . $listCourses->lastPage()}}
+                @if(!empty($noti))
+                    | {!! $noti !!}
+                @endif
+            </h5>
             <div class="ibox-tools">
                 <a href="{{route('admin.courses.create')}}" class="btn btn-primary btn-xs">Add new course</a>
             </div>
@@ -40,9 +50,10 @@
                     </a>
                 </div>
                 <div class="col-md-11">
-                    <form action="{{route('admin.users.search')}}" method="GET">
+                    <form action="{{route('admin.courses.search')}}" method="GET">
                         <div class="input-group">
-                            <input type="text" placeholder="Search for: name, emai, phone, skype" name="q"
+                            <input type="text" placeholder="Search for: name, details, description, teacher name"
+                                   name="q" value="{{request()->input('q') ?? ''}}"
                                    class="input-sm form-control">
                             <span class="input-group-btn">
                             <button type="button" class="btn btn-sm btn-primary"> Search!</button>
@@ -57,42 +68,65 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Teacher</th>
-                        <th>Start date</th>
-                        <th>Status</th>
+                        <th class="w-1">ID</th>
+                        <th class="w-18">Name
+                        <th class="w-18">Teacher</th>
+                        <th class="w-10">Type</th>
+                        <th class="w-8">Price</th>
+                        <th class="w-8">Students</th>
+                        <th class="w-10">Start date</th>
+                        <th class="w-10">End date</th>
+                        <th class="w-6">Status</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($listCourses as $course)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $course->id }}</td>
+                            <td>
+                                {{ $course->name }}
+                            </td>
                             <td class="project-people">
-                                <img alt="image" class="img-circle"
-                                     src="{{asset(Config::get('app.avatar_path') . "default.jpg")}}">
-                                <div class="people-name">
-                                    <strong>Ten khoa hoc o day</strong>
-                                </div>
+                                @if ($course->teacher)
+                                    <img alt="image" class="img-circle"
+                                         src="{{asset(Config::get('app.avatar_path') . $course->teacher->image)}}">
+                                    <div class="people-name">
+                                        <strong>{{$course->teacher->name}}</strong>
+                                    </div>
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                {{ $course->course_type->name }}
+                            </td>
+                            <td class="text-center">
+                                {{ $course->price }}$
+                            </td>
+                            <td class="text-center">
+                                {{ $course->num_students . "/" . $course->max_students }}
+                            </td>
+                            <td class="text-center">
+                                {{ date('d-m-Y', strtotime($course->start_at)) }}
+                            </td>
+                            <td class="text-center">
+                                {{ date('d-m-Y', strtotime($course->end_at)) }}
                             </td>
                             <td>
-                                Ten giao vien
-                            </td>
-                            <td>
-                                Ngay bat dau
-                            </td>
-                            <td class="project-status">
-                                <span class="label label-primary">Active</span>
+                                @if($course->public)
+                                    <span class="label label-primary">Public</span>
+                                @else
+                                    <span class="label label-default">Private</span>
+                                @endif
+
                             </td>
                             <td class="project-actions">
                                 {{--<a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>--}}
                                 <a href="#" class="btn btn-success btn-sm"><i
-                                            class="fa fa-pencil"></i> Edit
+                                            class="fa fa-pencil"></i>
                                 </a>
                                 <button end-point="#"
                                         user-name="#" class="btn btn-danger btn-sm btn-delete"><i
-                                            class="fa fa-trash"></i> Delete
+                                            class="fa fa-trash"></i>
                                 </button>
                             </td>
                         </tr>

@@ -36,10 +36,10 @@
                   autocomplete="off">
                 {{ csrf_field() }}
 
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                     <label class="col-sm-2 control-label" for="name">Name</label>
-                    <div class="col-sm-10 {{ $errors->has('name') ? ' has-error' : '' }}">
-                        <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}"/>
+                    <div class="col-sm-10">
+                        <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}" required />
                         @if ($errors->has('name'))
                             <span class="help-block m-b-none text-danger">
                                 {{$errors->first('name')}}
@@ -47,10 +47,10 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                     <label class="col-sm-2 control-label" for="email">Email</label>
-                    <div class="col-sm-10 {{ $errors->has('email') ? ' has-error' : '' }}">
-                        <input type="text" id="email" class="form-control" name="email" value="{{ old('email') }}"/>
+                    <div class="col-sm-10">
+                        <input type="text" id="email" class="form-control" name="email" value="{{ old('email') }}" required />
                         @if ($errors->has('email'))
                             <span class="help-block m-b-none text-danger">
                                 {{$errors->first('email')}}
@@ -58,16 +58,24 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                     <label class="col-sm-2 control-label" for="password">Password</label>
-                    <div class="col-sm-10 {{ $errors->has('password') ? ' has-error' : '' }}">
+                    <div class="col-sm-10">
                         <input type="password" id="password" class="form-control" name="password"
-                               autocomplete="new-password" value="{{ old('password') }}"/>
+                               autocomplete="new-password" value="{{ old('password') }}" required />
                         @if ($errors->has('password'))
                             <span class="help-block m-b-none text-danger">
                                 {{$errors->first('password')}}
                             </span>
                         @endif
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Type</label>
+                    <div class="col-sm-10 checkbox i-checks">
+                        <label style="padding-left: 15px" for="teacher">
+                            <input type="checkbox" id="teacher" name="teacher"><i></i> Teacher
+                        </label>
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>

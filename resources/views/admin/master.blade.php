@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html>
+<head>
 
-@include('admin.layouts.head')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>@yield('title', 'Dashboard') - IT Course</title>
+
+    <link rel="shortcut icon" href="{{asset('images/favicon.png')}}">
+
+    @include('admin.layouts.main-css')
+
+    @yield('style')
+</head>
 <body class="fixed-nav fixed-sidebar">
 
 <div id="wrapper">

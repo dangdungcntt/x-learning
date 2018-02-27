@@ -3,15 +3,54 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseRequest;
 use App\Models\Course;
+use App\Models\CourseType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Validator;
 
 class CourseAdminController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function search(Request $request)
+    {
+        $q = $request->input('q');
+
+        if (empty($q)) {
+            return redirect()->route('admin.courses.index')->with('flash_error', 'Empty query');
+        }
+
+        $op = '<';
+        if (strtolower($q) === 'public') $op = '>';
+        if (strtolower($q) === 'private') $op = '=';
+
+        $listCourses = Course::whereHas('teacher', function ($query) use ($q) {
+            $query->where('name', 'LIKE', '%' . $q . '%');
+        })
+            ->orWhere(function ($query) use ($q) {
+                $query->where('id', '=', $q)
+                    ->orWhere('details', 'LIKE', '%' . $q . '%')
+                    ->orWhere('name', 'LIKE', '%' . $q . '%')
+                    ->orWhere('description', 'LIKE', '%' . $q . '%');
+            })
+            ->orWhere('public', $op, false)
+            ->paginate(10);
+
+//        dd($listCourses);
+
+        $data = [
+            'active' => getAdminActiveMenu('courses/index'),
+            'listCourses' => $listCourses
+        ];
+
+        $noti = "<strong>" . $listCourses->total() . " </strong> result for <strong>\"" . $q . "\"</strong>";
+
+        return view('admin.courses.list', $data)->with('noti', $noti);
     }
 
     /**
@@ -21,14 +60,14 @@ class CourseAdminController extends Controller
      */
     public function index()
     {
-        $listCourses = Course::paginate(10);
+        $listCourses = Course::with('course_type')->with('teacher')->paginate(10);
 
-        $view = 'admin.courses.list';
         $data = [
             'active' => getAdminActiveMenu('courses/index'),
             'listCourses' => $listCourses
         ];
-        return view($view, $data);
+
+        return view('admin.courses.list', $data);
     }
 
     /**
@@ -38,11 +77,14 @@ class CourseAdminController extends Controller
      */
     public function create()
     {
-        $view = 'admin.courses.create';
+        $courseTypes = CourseType::all();
+
         $data = [
-            'active' => getAdminActiveMenu('courses/create')
+            'active' => getAdminActiveMenu('courses/create'),
+            'courseTypes' => $courseTypes
         ];
-        return view($view)->with($data);
+
+        return view('admin.courses.create')->with($data);
     }
 
     /**
@@ -51,9 +93,17 @@ class CourseAdminController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        return json_encode($request);
+        $request->merge(['public' => (int) $request->input('public') == 'on']);
+
+        $courseType = Course::create($request->all());
+
+        if ($courseType) {
+            return redirect()->route('admin.courses.create')->with('flash_success', 'Successfully');
+        }
+
+        return redirect()->route('admin.courses.create')->with('flash_error', 'Cannot create course, try again later');
     }
 
     /**

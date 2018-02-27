@@ -4,24 +4,7 @@
 
 @section('style')
     <style>
-        .project-people {
-            display: flex;
-        }
-
-        .project-people img {
-            display: flex;
-            /*flex: none;*/
-        }
-
-        .project-people .people-name {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: left;
-            padding-left: 5px;
-        }
-
-        table th:last-child {
+        table td:last-child, table th:last-child {
             text-align: center;
         }
     </style>
@@ -82,12 +65,14 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Skype</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th style="width: 1px">ID</th>
+                        <th style="width: 230px">Name</th>
+                        <th style="width: 100px">Type</th>
+                        <th style="width: 200px">Email</th>
+                        <th style="width: 130px">Phone</th>
+                        <th style="width: 130px">Skype</th>
+                        <th style="width: 130px">Facebook</th>
+                        <th style="">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -103,22 +88,32 @@
                                 </div>
                             </td>
                             <td>
+                                @if($user->is_teacher)
+                                    <span class="badge badge-primary">Teacher</span>
+                                @else
+                                    <span class="badge">Student</span>
+                                @endif
+                            </td>
+                            <td>
+                                {{$user->email}}
+                            </td>
+                            <td>
                                 {{$user->phone}}
                             </td>
                             <td>
                                 {{$user->socials->skype ?? ''}}
                             </td>
-                            <td class="project-status">
-                                <span class="label label-primary">Active</span>
+                            <td>
+                                {{$user->socials->facebook ?? ''}}
                             </td>
                             <td class="project-actions">
                                 {{--<a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>--}}
-                                <a href="{{route("admin.users.edit", $user->id)}}" class="btn btn-success btn-sm"><i
-                                            class="fa fa-pencil"></i> Edit
+                                <a href="{{route("admin.users.edit", $user->id)}}" class="btn btn-success btn-sm">
+                                    <i class="fa fa-pencil"></i>
                                 </a>
                                 <button end-point="{{route('admin.users.destroy', $user->id)}}"
-                                        user-name="{{$user->name}}" class="btn btn-danger btn-sm btn-delete"><i
-                                            class="fa fa-trash"></i> Delete
+                                        record-name="{{$user->name}}" class="btn btn-danger btn-sm btn-delete">
+                                    <i class="fa fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
@@ -138,7 +133,7 @@
 
         $(function () {
             $('.btn-delete').on('click', function (e) {
-                let name = $(this).attr('user-name');
+                let name = $(this).attr('record-name');
                 let endPoint = $(this).attr('end-point');
                 swal({
                     title: `Are you sure?`,
@@ -150,13 +145,13 @@
                     .then((willDelete) => {
                         if (willDelete) {
                             //ajax to delete here
-                            deleteUser(this, name, endPoint);
+                            deleteRecord(this, name, endPoint);
                         }
                     });
             })
         });
 
-        function deleteUser(button, name, endPoint) {
+        function deleteRecord(button, name, endPoint) {
             $.ajax({
                 url: endPoint,
                 method: 'POST',

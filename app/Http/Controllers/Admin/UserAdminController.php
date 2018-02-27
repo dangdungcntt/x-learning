@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -39,7 +40,6 @@ class UserAdminController extends Controller
             $user->socials = json_decode($user->socials);
         }
 
-        $view = 'admin.users.list';
         $data = [
             'active' => getAdminActiveMenu('users/index'),
             'listUsers' => $listUsers
@@ -47,7 +47,7 @@ class UserAdminController extends Controller
 
         $noti = "<strong>" . $listUsers->total() . " </strong> result for <strong>\"" . $q . "\"</strong>";
 
-        return view($view, $data)->with('noti', $noti);
+        return view('admin.users.list', $data)->with('noti', $noti);
     }
 
     /**
@@ -65,13 +65,12 @@ class UserAdminController extends Controller
             $user->socials = json_decode($user->socials);
         }
 
-        $view = 'admin.users.list';
         $data = [
             'active' => getAdminActiveMenu('users/index'),
             'listUsers' => $listUsers
         ];
 
-        return view($view, $data);
+        return view('admin.users.list', $data);
     }
 
     /**
@@ -81,11 +80,11 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        $view = 'admin.users.create';
         $data = [
             'active' => getAdminActiveMenu('users/create')
         ];
-        return view($view, $data);
+
+        return view('admin.users.create', $data);
     }
 
     /**
@@ -119,11 +118,28 @@ class UserAdminController extends Controller
                 ->withInput();
         }
 
-        $user = User::create(
-            array_merge($request->except(['password']), ['password' => bcrypt($request->input('password'))])
-        );
+        $isTeacher = $request->input('teacher') == 'on';
+
+        $request->merge([
+            'password' => bcrypt($request->input('password')),
+            'is_teacher' => $isTeacher
+        ]);
+
+        $user = User::create($request->all());
 
         if ($user) {
+            if ($isTeacher) {
+
+                $teacher = Teacher::create([
+                    'id' => $user->id
+                ]);
+
+                if (!$teacher) {
+                    $user->update(['is_teacher' => 0]);
+                }
+
+            }
+
             return redirect()->route('admin.users.create')->with('flash_success', 'Successfully');
         }
 
@@ -159,13 +175,12 @@ class UserAdminController extends Controller
 
         $user->socials = json_decode($user->socials);
 
-        $view = 'admin.users.edit';
         $data = [
             'active' => getAdminActiveMenu('users'),
             'user' => $user
         ];
 
-        return view($view, $data);
+        return view('admin.users.edit', $data);
     }
 
     /**
@@ -190,13 +205,14 @@ class UserAdminController extends Controller
             'name.max' => 'Name is too long',
             'email.email' => 'Invalid email',
             'email.unique' => 'Email already exist',
-            'phone.max' => 'Max length of phone is 16'
+            'phone.between' => 'Phone must be from 10 - 16 number',
+            'phone.regex' => 'Invalid phone number, format of phone number: +84xxx or 0xxx'
         ];
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'phone' => 'max:16'
+            'email' => 'required|email|unique:users,email,' . $id,
+            'phone' => ['nullable', 'between:10,16', 'regex:/^(\+[^0]|0)[0-9]+$/']
         ], $messages);
 
         if ($validator->fails()) {
@@ -205,9 +221,24 @@ class UserAdminController extends Controller
                 ->withInput();
         }
 
-        $check = $user->update($request->has('password') ? $request->except(['password']) : $request->all());
+        $isTeacher = $request->input('teacher') == 'on';
+
+        $request->merge(['is_teacher' => $isTeacher]);
+
+        $check = $user->update($request->except(['password']));
 
         if ($check) {
+            $teacher = Teacher::query()->find($id);
+
+            if (!$teacher) {
+                $res = Teacher::create([
+                    'id' => $id
+                ]);
+
+                if (!$res) {
+                    $user->update(['is_teacher' => 0]);
+                }
+            }
             return redirect()->route('admin.users.edit', $id)->with('flash_success', 'Updated');
         }
 

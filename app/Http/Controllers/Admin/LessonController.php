@@ -14,11 +14,11 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $view = 'admin.lessons.list';
         $data = [
             'active' => getAdminActiveMenu('lessons/index'),
         ];
-        return view($view, $data);
+
+        return view('admin.lessons.list', $data);
     }
 
     /**
@@ -28,11 +28,11 @@ class LessonController extends Controller
      */
     public function create()
     {
-        $view = 'admin.lessons.create';
         $data = [
             'active' => getAdminActiveMenu('lessons/create')
         ];
-        return view($view)->with($data);
+
+        return view('admin.lessons.create')->with($data);
     }
 
     /**

@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-02-07 22:49:31.
+    * Generated on 2018-02-26 07:50:44.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -136,8 +136,8 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
@@ -267,8 +267,8 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
@@ -398,8 +398,8 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
     ]));
     override(\App::make(0), map([
         '' => '@',
@@ -529,8 +529,8 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
     ]));
     override(\App::makeWith(0), map([
         '' => '@',
@@ -660,8 +660,8 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
     ]));
     override(\app(0), map([
         '' => '@',
@@ -791,8 +791,8 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
     ]));
     override(\resolve(0), map([
         '' => '@',
@@ -922,8 +922,8 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'Laravelista\Ekko\Ekko' => \Laravelista\Ekko\Ekko::class,
     ]));
 
     override(\Illuminate\Support\Arr::add(0), type(0));
