@@ -4,7 +4,7 @@
 	</div>
 	<div class="page-title">
 		<div class="container">
-			<h1>{{$title}}</h1>
+			<h1>@yield('title')</h1>
 		</div>
 	</div>
 </section>

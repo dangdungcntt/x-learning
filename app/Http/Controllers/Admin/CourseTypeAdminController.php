@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CourseType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Config;
 
 class CourseTypeAdminController extends Controller
 {
@@ -172,6 +173,67 @@ class CourseTypeAdminController extends Controller
         }
 
         return redirect()->route('admin.courses.types.edit', $id)->with('flash_error', 'Cannot update now, try again later');
+    }
+
+    public function updateImg(Request $request, $id)
+    {
+        $courseType = CourseType::query()->find($id);
+
+        if (empty($courseType)) {
+            return json_encode([
+                'success' => false,
+                'message' => 'Course type is not exists'
+            ]);
+        }
+
+        if (!$request->hasFile('img')) {
+            return json_encode([
+                'success' => false,
+                'message' => 'Missing file (img)'
+            ]);
+        }
+
+        $file = $request->file('img');
+
+        $ext = strtolower($file->getClientOriginalExtension());
+
+        if (!in_array($ext, ['png', 'jpg', 'jpeg', 'gif'])) {
+            return json_encode([
+                'success' => false,
+                'message' => 'File format must be png|jpg|jpeg|gif'
+            ]);
+        }
+
+        $public = public_path() . DIRECTORY_SEPARATOR;
+        $path = Config::get('app.course_type_path');
+
+        $currentFile = $courseType->image;
+        $fileName = $id . "_" . time() . "." . $ext;
+
+        $newPath = $file->move($public . $path, $fileName);
+
+        if (!$newPath) {
+            return json_encode([
+                'success' => false,
+                'message' => 'An error occurs, try again later'
+            ]);
+        }
+
+        $check = $courseType->update(['image' => $fileName]);
+
+        if (!$check) {
+            return json_encode([
+                'success' => false,
+                'message' => 'An error occurs, try again later'
+            ]);
+        }
+
+        chmod($public . $path . $fileName, 0660);
+
+        return json_encode([
+            'success' => true,
+            'path' => asset($path . $fileName)
+        ]);
     }
 
     /**

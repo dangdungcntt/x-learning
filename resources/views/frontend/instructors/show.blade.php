@@ -1,4 +1,7 @@
 @extends('frontend.master')
+
+@section('title', 'Name instructor here')
+
 @section('content')
     <section class="teacher-profile">
         <div class="container">

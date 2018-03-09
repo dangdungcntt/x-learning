@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseRequest extends FormRequest
+class CourseRequestUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,9 +29,10 @@ class CourseRequest extends FormRequest
             'details' => 'required|max:1000',
             'type_id' => 'required|exists:course_types,id',
             'price' => 'required|numeric',
+            'teacher_id' => 'nullable|exists:teachers,id',
             'max_students' => 'required|numeric|between:1,100',
-            'start_at' => 'required|date|after:today',
-            'end_at' => 'required|date|after:today',
+            'start_at' => 'required|date',
+            'end_at' => 'required|date',
         ];
     }
 
@@ -55,6 +56,9 @@ class CourseRequest extends FormRequest
                 'required' => 'Price type is required',
                 'numeric' => 'Price must be a number'
             ],
+            'teacher_id' => [
+                'exists' => 'Teacher not found'
+            ],
             'max_students' => [
                 'required' => 'Max student is required',
                 'numeric' => 'Max students must be a number',
@@ -62,13 +66,11 @@ class CourseRequest extends FormRequest
             ],
             'start_at' => [
                 'required' => 'Start at is required',
-                'date' => 'Invalid date',
-                'after' => 'Start at must be later than today',
+                'date' => 'Invalid date'
             ],
             'end_at' => [
                 'required' => 'End at is required',
-                'date' => 'Invalid date',
-                'after' => 'End at must be later than today',
+                'date' => 'Invalid date'
             ]
         ];
     }

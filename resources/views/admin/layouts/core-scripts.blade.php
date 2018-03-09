@@ -22,6 +22,7 @@
 <script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script>
 
 <script>
+    let csrf_token = "{{csrf_token()}}";
     $(document).ready(function () {
         $('.sidebar-collapse').slimScroll({
             height: '100%',

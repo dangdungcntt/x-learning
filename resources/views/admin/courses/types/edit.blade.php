@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-9">
-            <h2>Editcourse type</h2>
+            <h2>Edit course type</h2>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{route('admin.dashboard')}}">Dashboard </a>
@@ -34,7 +34,8 @@
             {{--</a>--}}
             {{--</div>--}}
         </div>
-        <div class="ibox-content">
+        <div class="ibox-content clearfix">
+            <div class="col-md-8">
             <form method="POST" action="{{route("admin.courses.types.update", $courseType->id)}}" class="form-horizontal">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
@@ -69,5 +70,64 @@
                 </div>
             </form>
         </div>
+        
+        <div class="col-md-4 text-center">
+
+                <div class="preview-img" style="margin: auto">
+                    <a href="#"><img class="img-thumbnail" id="previewImg"
+                                                                          src="{{asset(Config::get('app.course_type_path') . ($courseType->image ?? 'default.jpg'))}}"></a>
+                </div>
+                <br>
+                <label for="img" class="btn btn-primary">Upload image</label>
+                <input type="file" id="img" style="display: none" />
+            </div>
+            </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(function () {
+            $('#img').on('change', function (e) {
+                e.preventDefault();
+
+                let file = e.target.files[0];
+
+                if (file.size > 5 * 1024 * 1024) {
+                    return swal('File too large, max size is 5MB')
+                }
+
+                let data = new FormData();
+                data.append('img', file);
+                data.append('_token', csrf_token);
+
+                $.ajax({
+                    url: '{{route('admin.courses.types.update_img', $courseType->id)}}',
+                    method: 'POST',
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    data: data
+                })
+                    .then(res => {
+                        if (!res.success) {
+                            return swal({
+                                title: 'Error',
+                                text: res.message,
+                                icon: "error",
+                            })
+                        }
+
+                        // console.log(res.path);
+
+                        $('#previewImg').attr('src', res.path + "?v=1");
+
+                        swal('Successfully', {
+                            icon: "success",
+                        })
+                    });
+                return false
+            })
+        });
+    </script>
+    @endsection

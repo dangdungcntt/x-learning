@@ -87,15 +87,18 @@
                             <td>
                                 {{ $course->name }}
                             </td>
-                            <td class="project-people">
-                                @if ($course->teacher)
+                            @if ($course->teacher)
+                                <td class="project-people">
                                     <img alt="image" class="img-circle"
                                          src="{{asset(Config::get('app.avatar_path') . $course->teacher->image)}}">
                                     <div class="people-name">
                                         <strong>{{$course->teacher->name}}</strong>
                                     </div>
-                                @endif
-                            </td>
+                                </td>
+                            @else
+                                <td></td>
+                            @endif
+
                             <td class="text-center">
                                 {{ $course->course_type->name }}
                             </td>
@@ -121,12 +124,14 @@
                             </td>
                             <td class="project-actions">
                                 {{--<a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>--}}
-                                <a href="#" class="btn btn-success btn-sm"><i
-                                            class="fa fa-pencil"></i>
+                                <a href="{{route('admin.courses.lessons', $course->id)}}" class="btn btn-white btn-sm">Lessons
                                 </a>
-                                <button end-point="#"
-                                        user-name="#" class="btn btn-danger btn-sm btn-delete"><i
-                                            class="fa fa-trash"></i>
+                                <a href="{{route('admin.courses.edit', $course->id)}}" class="btn btn-success btn-sm">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <button end-point="{{route('admin.courses.destroy', $course->id)}}"
+                                        record-name="{{$course->name}}" class="btn btn-danger btn-sm btn-delete">
+                                    <i class="fa fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
@@ -137,4 +142,54 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(function () {
+            $('.btn-delete').on('click', function (e) {
+                let name = $(this).attr('record-name');
+                let endPoint = $(this).attr('end-point');
+                swal({
+                    title: `Are you sure?`,
+                    text: `Deleting ${name}`,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            //ajax to delete here
+                            deleteRecord(this, name, endPoint);
+                        }
+                    });
+            })
+        });
+
+        function deleteRecord(button, name, endPoint) {
+            $.ajax({
+                url: endPoint,
+                method: 'POST',
+                data: {
+                    '_method': 'DELETE',
+                    '_token': csrf_token
+                },
+                dataType: 'json'
+            })
+                .then(res => {
+                    if (res.success) {
+                        swal(`Poof! ${name} has been deleted!`, {
+                            icon: "success",
+                        });
+                        $(button).closest('tr').remove();
+                    } else {
+                        swal({
+                            title: `An error occured`,
+                            text: `Try again later`,
+                            icon: "error",
+                        })
+                    }
+                });
+        }
+    </script>
 @endsection

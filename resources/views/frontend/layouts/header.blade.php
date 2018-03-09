@@ -4,7 +4,7 @@
             <div class="navbar navbar-inverse">
                 <div class="navbar-header">
                     <a href="#" class="navbar-brand">
-                        <img src="images/logo.png" alt="">
+                        <img src="{{asset('images/logo.png')}}" alt="">
                     </a>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -81,7 +81,7 @@
                         </li>
 
                         <li class="{{ $active['contact'] }}">
-                            <a href="{{route('contact')}}">Contact us </a>
+                            <a href="{{route('contact')}}">Contact Us </a>
                         </li>
                         <li class="{{ $active['teaching'] }}">
                             <a href="{{route('teaching')}}">Become an Instructor</a>

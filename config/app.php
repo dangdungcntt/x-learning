@@ -227,5 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-    'avatar_path' => 'images/avatar/'
+    'avatar_path' => 'images/avatar/',
+    'course_path' => 'images/courses/',
+    'course_type_path' => 'images/courses/types/',
 ];

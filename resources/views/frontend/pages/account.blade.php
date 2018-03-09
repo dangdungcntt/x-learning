@@ -1,4 +1,7 @@
 @extends('frontend.master')
+
+@section('title', 'My account')
+
 @section('content')
 <div class="my-accountPage">
 	<div class="container">

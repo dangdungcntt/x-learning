@@ -27,4 +27,7 @@ Route::domain(config('app.url'))->group(function () {
 
 	Route::get('courses', 'Frontend\CourseController@index')->name('courses');
 	Route::get('courses/{id}/{slug?}', 'Frontend\CourseController@show')->name('courses.show');
+
+	Route::get('lessons/{id}', 'Frontend\LessonController@show')->name('lessons.show');
+    Route::get('lessons/{id}/play', 'Frontend\LessonController@play')->name('lessons.play');
 });

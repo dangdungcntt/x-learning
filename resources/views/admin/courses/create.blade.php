@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Add new course')
+@section('title', 'Add course')
 
 @section('breadcrumb')
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -14,7 +14,7 @@
                     <a href="{{route('admin.courses.index')}}">Courses </a>
                 </li>
                 <li class="active">
-                    <strong>Add new course</strong>
+                    <strong>Add course</strong>
                 </li>
             </ol>
         </div>

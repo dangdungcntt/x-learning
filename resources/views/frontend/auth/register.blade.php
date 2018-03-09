@@ -1,4 +1,7 @@
 @extends('frontend.master')
+
+@section('title', 'Register')
+
 @section('content')
     <section class="login-view">
         <div class="container">
