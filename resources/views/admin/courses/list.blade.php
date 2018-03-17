@@ -177,7 +177,7 @@
                 },
                 dataType: 'json'
             })
-                .then(function(res) {
+                .then(function (res) {
                     if (res.success) {
                         swal('Poof! ${name} has been deleted!'.fillData({name: name}), {
                             icon: "success"

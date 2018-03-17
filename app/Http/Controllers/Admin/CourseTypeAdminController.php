@@ -93,7 +93,7 @@ class CourseTypeAdminController extends Controller
                 ->withInput();
         }
 
-        $courseType = CourseType::create($request->all());
+        $courseType = CourseType::query()->create($request->all());
 
         if ($courseType) {
             return redirect()->route('admin.courses.types.create')->with('flash_success', 'Successfully');
@@ -207,7 +207,6 @@ class CourseTypeAdminController extends Controller
         $public = public_path() . DIRECTORY_SEPARATOR;
         $path = Config::get('app.course_type_path');
 
-        $currentFile = $courseType->image;
         $fileName = $id . "_" . time() . "." . $ext;
 
         $newPath = $file->move($public . $path, $fileName);

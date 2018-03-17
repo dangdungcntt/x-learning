@@ -10,9 +10,8 @@ use App\Models\CourseType;
 use App\Models\Lesson;
 use App\Models\User;
 use Config;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Validator;
 
 class CourseAdminController extends Controller
 {
@@ -41,10 +40,10 @@ class CourseAdminController extends Controller
         if (strtolower($q) === 'public') $op = '>';
         if (strtolower($q) === 'private') $op = '=';
 
-        $listCourses = Course::whereHas('teacher', function ($query) use ($q) {
+        $listCourses = Course::query()->whereHas('teacher', function (Builder $query) use ($q) {
             $query->where('name', 'LIKE', '%' . $q . '%');
         })
-            ->orWhere(function ($query) use ($q) {
+            ->orWhere(function (Builder $query) use ($q) {
                 $query->where('id', '=', $q)
                     ->orWhere('details', 'LIKE', '%' . $q . '%')
                     ->orWhere('name', 'LIKE', '%' . $q . '%')
@@ -102,14 +101,14 @@ class CourseAdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CourseRequestStore $request
      * @return \Illuminate\Http\Response
      */
     public function store(CourseRequestStore $request)
     {
         $request->merge(['public' => (int)$request->input('public') == 'on']);
 
-        $course = Course::create($request->all());
+        $course = Course::query()->create($request->all());
 
         if ($course) {
             return redirect()->route('admin.courses.create')->with('flash_success', 'Successfully');
@@ -161,7 +160,7 @@ class CourseAdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CourseRequestUpdate $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
@@ -223,7 +222,6 @@ class CourseAdminController extends Controller
         $public = public_path() . DIRECTORY_SEPARATOR;
         $path = Config::get('app.course_path');
 
-        $currentFile = $course->image;
         $fileName = $id . "_" . time() . "." . $ext;
 
         $newPath = $file->move($public . $path, $fileName);
