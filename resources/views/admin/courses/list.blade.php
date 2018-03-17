@@ -54,9 +54,9 @@
                         <div class="input-group">
                             <input type="text" placeholder="Search for: name, details, description, teacher name"
                                    name="q" value="{{request()->input('q') ?? ''}}"
-                                   class="input-sm form-control">
+                                   class="input-sm form-control" required>
                             <span class="input-group-btn">
-                            <button type="button" class="btn btn-sm btn-primary"> Search!</button>
+                            <button class="btn btn-sm btn-primary"> Search!</button>
                         </span>
                         </div>
                     </form>
@@ -146,18 +146,19 @@
 
 @section('script')
     <script>
+
         $(function () {
-            $('.btn-delete').on('click', function (e) {
-                let name = $(this).attr('record-name');
-                let endPoint = $(this).attr('end-point');
+            $('.btn-delete').on('click', function () {
+                var name = $(this).attr('record-name');
+                var endPoint = $(this).attr('end-point');
                 swal({
-                    title: `Are you sure?`,
-                    text: `Deleting ${name}`,
+                    title: 'Are you sure?',
+                    text: 'Deleting ${name}'.fillData({name: name}),
                     icon: "warning",
                     buttons: true,
-                    dangerMode: true,
+                    dangerMode: true
                 })
-                    .then((willDelete) => {
+                    .then(function (willDelete) {
                         if (willDelete) {
                             //ajax to delete here
                             deleteRecord(this, name, endPoint);
@@ -176,17 +177,17 @@
                 },
                 dataType: 'json'
             })
-                .then(res => {
+                .then(function(res) {
                     if (res.success) {
-                        swal(`Poof! ${name} has been deleted!`, {
-                            icon: "success",
+                        swal('Poof! ${name} has been deleted!'.fillData({name: name}), {
+                            icon: "success"
                         });
                         $(button).closest('tr').remove();
                     } else {
                         swal({
-                            title: `An error occured`,
-                            text: `Try again later`,
-                            icon: "error",
+                            title: 'An error occured',
+                            text: 'Try again later',
+                            icon: 'error'
                         })
                     }
                 });

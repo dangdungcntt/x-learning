@@ -22,15 +22,25 @@
 <script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script>
 
 <script>
-    let csrf_token = "{{csrf_token()}}";
-    $(document).ready(function () {
+    var csrf_token = "{{csrf_token()}}";
+    $(function () {
         $('.sidebar-collapse').slimScroll({
             height: '100%',
             railOpacity: 0.9
         });
         $('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
+            radioClass: 'iradio_square-green'
         });
     });
+
+    String.prototype.fillData = function(data) {
+        var str = this;
+        Object.keys(data).forEach(function (key) {
+            str = str.replace("${" + key + "}", data[key]);
+        });
+
+        return str;
+    }
+
 </script>
