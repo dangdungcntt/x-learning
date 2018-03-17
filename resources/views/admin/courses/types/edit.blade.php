@@ -41,8 +41,8 @@
                 {{ method_field('PUT') }}
 
                 <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label class="col-sm-2 control-label" for="name">Name</label>
-                    <div class="col-sm-10">
+                    <label class="col-md-2 col-sm-3 control-label" for="name">Name</label>
+                    <div class="col-md-10 col-sm-9">
                         <input type="text" id="name" class="form-control" name="name" value="{{ old('name') ?? $courseType->name }}" required />
                         @if ($errors->has('name'))
                             <span class="help-block m-b-none text-danger">
@@ -52,8 +52,8 @@
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('details') ? ' has-error' : '' }}">
-                    <label class="col-sm-2 control-label" for="details">Details</label>
-                    <div class="col-sm-10">
+                    <label class="col-md-2 col-sm-3 control-label" for="details">Details</label>
+                    <div class="col-md-10 col-sm-9">
                         <input type="text" id="details" class="form-control" name="details" value="{{ old('details') ?? $courseType->details }}" required />
                         @if ($errors->has('details'))
                             <span class="help-block m-b-none text-danger">
@@ -64,7 +64,7 @@
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-2">
+                    <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-3">
                         <button class="btn btn-primary" type="submit">Update</button>
                     </div>
                 </div>
