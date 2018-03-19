@@ -175,7 +175,7 @@ class CourseAdminController extends Controller
         $teacher = User::query()->find($request->input('teacher_id'));
 
         if (!$teacher->is_teacher) {
-            return redirect()->route('admin.courses.edit', $id)->with('flash_error', 'Only teacher can assignee to course');
+            return redirect()->route('admin.courses.edit', $id)->with('flash_error', 'Teacher not exist');
         }
 
         $public = $request->input('public') == 'on';
@@ -187,7 +187,7 @@ class CourseAdminController extends Controller
             return redirect()->route('admin.courses.edit', $id)->with('flash_success', 'Updated');
         }
 
-        return redirect()->route('admin.courses.create')->with('flash_error', 'Cannot create course, try again later');
+        return redirect()->route('admin.courses.create')->with('flash_error', 'Cannot update course, try again later');
     }
 
     public function updateImg(Request $request, $id)

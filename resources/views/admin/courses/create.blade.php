@@ -148,7 +148,7 @@
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <div class="col-sm-4 col-sm-offset-2">
-                        <button class="btn btn-primary" type="submit">Add course</button>
+                        <button class="btn btn-primary">Add course</button>
                     </div>
                 </div>
             </form>

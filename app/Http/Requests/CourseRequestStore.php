@@ -31,7 +31,7 @@ class CourseRequestStore extends FormRequest
             'price' => 'required|numeric',
             'max_students' => 'required|numeric|between:1,100',
             'start_at' => 'required|date|after:today',
-            'end_at' => 'required|date|after:today',
+            'end_at' => 'required|date|after:start_at',
         ];
     }
 
@@ -68,7 +68,7 @@ class CourseRequestStore extends FormRequest
             'end_at' => [
                 'required' => 'End at is required',
                 'date' => 'Invalid date',
-                'after' => 'End at must be later than today',
+                'after' => 'End at must be later than start_at',
             ]
         ];
     }

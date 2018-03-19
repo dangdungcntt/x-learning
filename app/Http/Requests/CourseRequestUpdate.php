@@ -32,7 +32,7 @@ class CourseRequestUpdate extends FormRequest
             'teacher_id' => 'nullable|exists:teachers,id',
             'max_students' => 'required|numeric|between:1,100',
             'start_at' => 'required|date',
-            'end_at' => 'required|date',
+            'end_at' => 'required|date|after:start_at',
         ];
     }
 
@@ -70,7 +70,8 @@ class CourseRequestUpdate extends FormRequest
             ],
             'end_at' => [
                 'required' => 'End at is required',
-                'date' => 'Invalid date'
+                'date' => 'Invalid date',
+                'after' => 'End at must be later than start_at'
             ]
         ];
     }

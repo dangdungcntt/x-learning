@@ -230,4 +230,5 @@ return [
     'avatar_path' => 'images/avatar/',
     'course_path' => 'images/courses/',
     'course_type_path' => 'images/courses/types/',
+    'lesson_path' => 'images/lessons/',
 ];

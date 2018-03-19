@@ -18,11 +18,16 @@ Route::domain('admin.' . config('app.url'))->group(function () {
     Route::get('transactions', 'Admin\AdminController@transactions')->name('admin.transactions');
 
     Route::get('users/search', 'Admin\UserAdminController@search')->name('admin.users.search');
-    Route::get('courses/types/search', 'Admin\CourseTypeAdminController@search')->name('admin.courses.types.search');
+
     Route::get('courses/search', 'Admin\CourseAdminController@search')->name('admin.courses.search');
     Route::get('courses/{id}/lessons', 'Admin\CourseAdminController@lessons')->name('admin.courses.lessons');
-    
     Route::post('courses/{id}/updateImg', 'Admin\CourseAdminController@updateImg')->name('admin.courses.update_img');
+
+    Route::get('lessons/search', 'Admin\LessonAdminController@search')->name('admin.lessons.search');
+    Route::post('lessons/{id}/updateImg', 'Admin\LessonAdminController@updateImg')->name('admin.lessons.update_img');
+
+
+    Route::get('courses/types/search', 'Admin\CourseTypeAdminController@search')->name('admin.courses.types.search');
     Route::post('courses/types/{id}/updateImg', 'Admin\CourseTypeAdminController@updateImg')->name('admin.courses.types.update_img');
 
     Route::resource('courses/types', 'Admin\CourseTypeAdminController', ['as' => 'admin.courses']);

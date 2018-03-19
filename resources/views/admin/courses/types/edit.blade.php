@@ -65,7 +65,7 @@
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-3">
-                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </form>
@@ -85,49 +85,4 @@
     </div>
 @endsection
 
-@section('script')
-    <script>
-        $(function () {
-            $('#img').on('change', function (e) {
-                e.preventDefault();
-
-                let file = e.target.files[0];
-
-                if (file.size > 5 * 1024 * 1024) {
-                    return swal('File too large, max size is 5MB')
-                }
-
-                let data = new FormData();
-                data.append('img', file);
-                data.append('_token', csrf_token);
-
-                $.ajax({
-                    url: '{{route('admin.courses.types.update_img', $courseType->id)}}',
-                    method: 'POST',
-                    processData: false,
-                    contentType: false,
-                    dataType: 'json',
-                    data: data
-                })
-                    .then(res => {
-                        if (!res.success) {
-                            return swal({
-                                title: 'Error',
-                                text: res.message,
-                                icon: "error",
-                            })
-                        }
-
-                        // console.log(res.path);
-
-                        $('#previewImg').attr('src', res.path + "?v=1");
-
-                        swal('Successfully', {
-                            icon: "success",
-                        })
-                    });
-                return false
-            })
-        });
-    </script>
-    @endsection
+@include('admin.script.update-img', ['url' => route('admin.courses.types.update_img', $courseType->id)])

@@ -25,7 +25,7 @@ class UserAdminController extends Controller
 
         $permission = getUserPermission();
 
-        $listUsers = User::query()
+        $users = User::query()
             ->where('permission', '<', $permission)
             ->where(function ($query) use ($q) {
                 $query->where('id', '=', $q)
@@ -36,16 +36,16 @@ class UserAdminController extends Controller
             })
             ->paginate(10);
 
-        foreach ($listUsers as &$user) {
+        foreach ($users as &$user) {
             $user->socials = json_decode($user->socials);
         }
 
         $data = [
             'active' => getAdminActiveMenu('users/index'),
-            'listUsers' => $listUsers
+            'users' => $users
         ];
 
-        $noti = "<strong>" . $listUsers->total() . " </strong> result for <strong>\"" . $q . "\"</strong>";
+        $noti = "<strong>" . $users->total() . " </strong> result for <strong>\"" . $q . "\"</strong>";
 
         return view('admin.users.list', $data)->with('noti', $noti);
     }
@@ -59,15 +59,15 @@ class UserAdminController extends Controller
     {
         $permission = getUserPermission();
 
-        $listUsers = User::query()->where('permission', '<', $permission)->paginate(10);
+        $users = User::query()->where('permission', '<', $permission)->paginate(10);
 
-        foreach ($listUsers as &$user) {
+        foreach ($users as &$user) {
             $user->socials = json_decode($user->socials);
         }
 
         $data = [
             'active' => getAdminActiveMenu('users/index'),
-            'listUsers' => $listUsers
+            'users' => $users
         ];
 
         return view('admin.users.list', $data);

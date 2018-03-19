@@ -78,7 +78,7 @@
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <div class="col-sm-4 col-sm-offset-2">
-                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary">Update</button>
                         @if (old('name'))
                             <a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-white" type="submit">Cancel</a>
                         @endif
